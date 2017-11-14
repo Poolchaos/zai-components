@@ -1,4 +1,4 @@
-# Conversations Application
+# Conversations Components
 
 ## Pre-requisites
 Install the following apps on your computer before you begin

@@ -10,19 +10,29 @@
     <br/>
     <br/>
     <br/>
-    <component-viewer>
-      <div style="min-height: 200px;">
-        <compose view.bind="selectedView" view-model.bind="selectedViewModel"></compose>
+    <!-- <component-viewer element-name.bind="selectedComponent.elementName"></component-viewer> -->
+
+    <div class="col-4 col-md-4 pull-left" style="min-height: 200px;">
+      <div repeat.for="property of attributes">
+        <div class="col-5 col-md-5 pull-left">
+          ${property}
+        </div>
+        <div class="col-7 col-md-7">
+          <input value.bind="data[property]" keyup.delegate="valueChange()" />
+        </div>
       </div>
-    </component-viewer>
+    </div>
+    <div class="col-8 col-md-8 pull-right" style="min-height: 200px;">
+      <component-viewer element-name.bind="selectedComponent.elementName" data.bind="data" if.bind="showContent"></component-viewer>
+    </div>
 
     <div class="col-6 col-md-6 pull-left">
       <h4>Html</h4>
-      <pre class="prettyprint js-component-html"> No Content</pre>
+      <pre class="prettyprint linenums js-component-html"> No Content</pre>
     </div>
 
     <div class="col-6 col-md-6 pull-right">
       <h4>JavaScript</h4>
-      <pre class="prettyprint js-component-javascript"> // No Content </pre>
+      <pre class="prettyprint linenums js-component-javascript"> // No Content </pre>
     </div>
 </template>

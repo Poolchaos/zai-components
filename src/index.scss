@@ -12,8 +12,6 @@
 
 @import '../node_modules/sass-bem-constructor/dist/_bem-constructor.scss';
 
-@import 'components/index';
-
 @import '_assets/css/_variables'; //Imports the global variables that will be used all over the application
 @import '_assets/css/fonts'; //this will import all the font styles
 @import '_assets/css/buttons'; //this will import all the button styles
@@ -22,6 +20,8 @@
 @import '_assets/css/icons'; //Imports the common styles for icons
 @import '_assets/css/utilities'; //Imports the common styles for utlities
 @import '_assets/css/_mixins.scss'; //Imports the common styles for mixins
+
+@import 'components/index';
 
 /* Pretty printing styles. Used with prettify.js. */
 /* Vim sunburst theme by David Leibovic */
@@ -104,6 +104,7 @@ li.L6,
 li.L7,
 li.L8 {
   list-style-type: none;
+  list-style-type: decimal !important;
 }
 /* Alternate shading for lines */
 li.L1,
@@ -111,6 +112,7 @@ li.L3,
 li.L5,
 li.L7,
 li.L9 {
+  background: #1e1e1e !important;
 }
 
 @media print {

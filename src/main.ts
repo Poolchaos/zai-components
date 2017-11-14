@@ -24,7 +24,8 @@ const configure = aurelia => {
     // .feature('zailab.common.js')
     // .feature('attributes')
     // .feature('converters')
-    .feature('components');
+    .feature('components')
+    .globalResources('component-viewer');
 
   let configure = aurelia.container.get(Configure);
   LogManager.setLevel(LogManager.logLevel.debug);
