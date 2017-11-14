@@ -1,0 +1,107 @@
+/* --------------------------------------- Color Palette Mapping --------------------------------------------- */
+
+$color-palette-key: 'base' !default;
+
+$color-palette: (
+    'color-primary': (
+        /*'base': #00AFEF,*/
+        'base': #26a8ff, // $color-blue--tint-15*/
+        'dark': #2087c4,
+        'light': #02fbf5,
+        'away': #3cc4e8,
+        'blue-regal': #003d69,
+        'blue-regal_light': #085a8d,
+        'blue-regal_lighter': #0066a6
+    ),
+    'color-secondary': (
+        'base': #011418,
+        'dark': #0b0b0b,
+        'mineshaft': #323232
+    ),
+    'color-shade': (
+        'base': #fff,
+        'black': #000,
+        'dusty-gray': #949fa8,
+        'gray': #707880,
+        'noble': #abb6c2,
+        'silk': #d1dfed
+    ),
+    'color-orange': (
+        'base': #ffb300,
+        'light': #f7941d,
+        'yellow': #e1ad01,
+        'warning': #EDA700
+    ),
+    'color-red': (
+        'base': #EC3237,
+        'red': #ff0000,
+        'pink': #c754c7
+    ),
+    'color-green': (
+        'base': #59c06d,
+        'dark': #00a858,
+        'light': #11FE03
+    ),
+    'color-aqua': (
+        'base': #117f76,
+        'dark': #155659,
+        'light': #0BA4A6
+    )
+);
+
+/* --------------------------------------- Opacity for Color Palette Mapping --------------------------------------------- */
+ /* --------------------------------------- used with lighter/darker colors --------------------------------------------- */
+
+$color-opacity: (
+    'light': 0.8,
+    'dark': 0.4,
+  // ... etc. TODO: BC: 05/09/06: Add more opacity variables for function
+);
+
+/* --------------------------------------- Blue --------------------------------------------- */
+// Base
+$color-blue: #0099ff; // hsb: 204/100/100 --
+
+// Tints
+$color-blue--tint-5: tint($color-blue, 5);
+$color-blue--tint-10: tint($color-blue, 10);
+$color-blue--tint-15: tint($color-blue, 15);
+$color-blue--tint-20: tint($color-blue, 20);
+$color-blue--tint-25: tint($color-blue, 25);
+$color-blue--tint-30: tint($color-blue, 30);
+$color-blue--tint-35: tint($color-blue, 35);
+$color-blue--tint-40: tint($color-blue, 40);
+$color-blue--tint-45: tint($color-blue, 45);
+$color-blue--tint-50: tint($color-blue, 50);
+$color-blue--tint-55: tint($color-blue, 55);
+$color-blue--tint-60: tint($color-blue, 60);
+$color-blue--tint-65: tint($color-blue, 65);
+$color-blue--tint-70: tint($color-blue, 70);
+$color-blue--tint-75: tint($color-blue, 75);
+$color-blue--tint-80: tint($color-blue, 80);
+$color-blue--tint-85: tint($color-blue, 85);
+$color-blue--tint-90: tint($color-blue, 90);
+$color-blue--tint-95: tint($color-blue, 95);
+$color-blue--tint-100: tint($color-blue, 100);
+
+// Shades
+$color-blue--shade-5: shade($color-blue, 5);
+$color-blue--shade-10: shade($color-blue, 10);
+$color-blue--shade-15: shade($color-blue, 15);
+$color-blue--shade-20: shade($color-blue, 20);
+$color-blue--shade-25: shade($color-blue, 25);
+$color-blue--shade-30: shade($color-blue, 30);
+$color-blue--shade-35: shade($color-blue, 35);
+$color-blue--shade-40: shade($color-blue, 40);
+$color-blue--shade-45: shade($color-blue, 45);
+$color-blue--shade-50: shade($color-blue, 50);
+$color-blue--shade-55: shade($color-blue, 55);
+$color-blue--shade-60: shade($color-blue, 60);
+$color-blue--shade-65: shade($color-blue, 65);
+$color-blue--shade-70: shade($color-blue, 70);
+$color-blue--shade-75: shade($color-blue, 75);
+$color-blue--shade-80: shade($color-blue, 80);
+$color-blue--shade-85: shade($color-blue, 85);
+$color-blue--shade-90: shade($color-blue, 90);
+$color-blue--shade-95: shade($color-blue, 95);
+$color-blue--shade-100: shade($color-blue, 100);

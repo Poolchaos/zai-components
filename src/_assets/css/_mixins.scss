@@ -1,0 +1,421 @@
+/* --------------------------------------- REM-Calculator Mixin Start ------------------------------------ */
+
+@mixin rem-calc($size) {
+  font-size: $size; //Fallback in px
+  font-size: remCalc($size);
+}
+
+/* --------------------------------------- REM-Calculator Mixin (UNTESTED - No Limits) ------------------- */
+
+@mixin rem($selector, $size) {
+  #{$selector} : ($size) + px; //Fallback in px
+  #{$selector} : remcalc($size);
+}
+
+/* -----------------------------------==== [REM-Calculator Mixin End] ====-------------------------------- */
+
+/* --------------------------------------- Whiten Mixin Start -------------------------------------------- */
+
+@mixin whiten() {
+  -webkit-filter: $whiten;
+  filter: $whiten;
+}
+
+/* -----------------------------------==== [Whiten Mixin End] ====---------------------------------------- */
+
+/* --------------------------------------- Change Icon Color Mixins Start -------------------------------------------- */
+
+@mixin icon-green() {
+  filter: hue-rotate(268deg) saturate(130%) brightness(130%);
+}
+
+@mixin icon-red() {
+  filter: hue-rotate(150deg) saturate(265%) brightness(92%);
+}
+
+@mixin icon-blue-dark() {
+  filter: hue-rotate(-2deg) brightness(17%) saturate(140%);
+}
+
+
+@mixin icon-blue-lighter() {
+  filter: brightness(69%) saturate(140%);
+}
+
+@mixin icon-grey() {
+  filter: hue-rotate(6deg) saturate(0.09) brightness(1.08);
+}
+
+@mixin icon-orange() {
+  filter: hue-rotate(186deg) saturate(122%) brightness(110%);
+}
+
+/* -----------------------------------==== [Whiten Mixin End] ====---------------------------------------- */
+
+/* --------------------------------------- Screen Breakpoint Mixin Start --------------------------------- */
+                                          /* SCREEN SIZE (RESOLUTIONS) */
+
+@mixin breakpoint($screen) {
+
+  //1921px min
+  @if $screen == xlarge {
+    @media screen and (min-width: 1921px) {
+      @content ;
+    }
+  }
+
+  // 1600px max
+  @else if $screen == large {
+    @media screen and (min-width: 1401px) and (max-width: 1600px) {
+      @content ;
+    }
+  }
+
+  // 1400px max
+  @else if $screen == x-medium {
+    @media screen and (min-width: 1367px) and (max-width: 1400px) {
+      @content ;
+    }
+  }
+
+  // 1366px max
+  @else if $screen == medium { 
+    @media screen and (max-width: 1366px) {
+      @content ;
+    }
+  }
+
+  // 1280px max
+  @else if $screen == small {  
+    @media screen and (max-width: 1280px) {
+      @content ;
+    }
+  }
+
+  // 1024px max
+  @if $screen == xsmall {
+    @media screen and (max-width: 1024px) {
+      @content ;
+    }
+  }
+
+  // cases
+  @else if $screen == medium-small-box {
+    @media screen and (max-height: 768px) and (max-width: 1366px) {
+      @content ;
+    }
+  }
+
+  // cases
+  @else if $screen == case-medium {
+    @media screen and (min-width: 1200px) and (max-width: 1365px) {
+      @content ;
+    }
+  }
+
+  // cases
+  @else if $screen == case-medium-odd-1281 {
+    @media screen and (max-width: 1281px) {
+      @content ;
+    }
+  }
+  
+  // cases
+  @else if $screen == case-medium-odd-1279 {
+    @media screen and (min-width: 1200px) and (max-width: 1279px) {
+      @content ;
+    }
+  }
+
+  // cases
+  @else if $screen == case-medium-odd-1200 {
+    @media screen and (min-width: 1200px) and (max-width: 1280px) {
+      @content ;
+    }
+  }
+  
+  // cases
+  @else if $screen == case-medium-odd-1201 {
+    @media screen and (min-width: 1201px) and (max-width: 1365px) {
+      @content ;
+    }
+  }
+}
+
+/* -----------------------------------==== [Screen Breakpoint Mixin End] ====----------------------------- */
+
+/* --------------------------------------- Font Size Mixin Start --------------------------------- */
+
+@mixin fontsize($size) {
+  @if $size=='xsmall' {
+    @include rem-calc(10px);
+    line-height: 0.857rem; 
+    @include breakpoint(xlarge) {
+      @include rem-calc(14px);
+      line-height: 1.143rem;
+    }
+	@include breakpoint(medium) {
+      @include rem-calc(6px);
+      line-height: 0.586rem;
+    }
+    @include breakpoint(small) {
+      @include rem-calc(9px);
+      line-height: 0.786rem;
+    }
+  }
+  @else if $size=='small' {
+    @include rem-calc(12px);
+    line-height: 1rem;
+    @include breakpoint(xlarge) {
+      @include rem-calc(16px);
+      line-height: 1.286rem;
+    }
+		// @include breakpoint(medium) {
+    //   @include rem-calc(9px);
+    //   line-height: 0.757rem; 
+    // }
+    // @include breakpoint(small) {
+    //   @include rem-calc(10px);
+    //   line-height: 0.857rem; 
+    // }
+  }
+  @else if $size=='medium' {
+    @include rem-calc(14px);
+    line-height: 1.143rem;
+    @include breakpoint(xlarge) {
+      @include rem-calc(18px);
+      line-height: 1.429rem;
+    }
+		// @include breakpoint(medium) {
+    //   @include rem-calc(9px);
+    //   line-height: 0.8rem; 
+    // }
+    @include breakpoint(small) {
+      @include rem-calc(12px);
+      line-height: 1rem;
+    }
+    // @include breakpoint(xsmall) {
+    //   @include rem-calc(10px);
+    //   line-height: 1rem;
+    // }
+  }
+  @else if $size=='large' {
+    @include rem-calc(16px);
+    line-height: 1.286rem;
+    @include breakpoint(xlarge) {
+      @include rem-calc(20px);
+      line-height: 1.571rem;
+    }
+		@include breakpoint(medium) {
+      @include rem-calc(15px);
+      line-height: 1.143rem;
+    }
+    @include breakpoint(small) {
+      @include rem-calc(14px);
+      line-height: 1.143rem;
+    }
+  }
+  @else if $size=='xlarge' {
+    @include rem-calc(25px);
+    line-height: 1.929rem;
+    @include breakpoint(xlarge) {
+      @include rem-calc(27px);
+      line-height: 2.071rem;
+    }
+		@include breakpoint(medium) {
+      @include rem-calc(19px);
+      line-height: 1.486rem;
+    }
+    @include breakpoint(small) {
+      @include rem-calc(23px);
+      line-height: 1.786rem;
+    }
+    @include breakpoint(xsmall) {
+      @include rem-calc(16px);
+    }
+  }
+  /* Use in special cases */
+  @else if $size=='xxlarge' {
+    @include rem-calc(28px);
+    line-height: 2.4rem;
+    @include breakpoint(xlarge) {
+      @include rem-calc(30px);
+      line-height: 2.571rem;
+    }
+    @media screen and (min-width: 1440px) and (max-width: 1600px) {
+      @include rem-calc(26px);
+      line-height: 1.8rem;
+    }
+		@include breakpoint(medium) {
+      @include rem-calc(21px);
+      line-height: 1.629rem;
+    }
+    @include breakpoint(small) {
+      @include rem-calc(25px);
+      line-height: 1.929rem;
+    }
+    @include breakpoint(xsmall) {
+      @include rem-calc(16px);
+      line-height: 1.929rem;
+    }
+  }
+}
+
+/* -----------------------------------==== [Font Size Mixin End] ====----------------------------- */
+
+/* --------------------------------------- Messages (mailboxes) Background Mixin Start ------------ */
+
+@mixin msgs-bg() {
+  border-style: solid;
+  border-width: 163px 25px 411px 21px;
+  -moz-border-image: url(../img/msgs_bg.png) 163 25 411 21 stretch;
+  -webkit-border-image: url(../img/msgs_bg.png) 163 25 411 21 stretch;
+  -o-border-image: url(../img/msgs_bg.png) 163 25 411 21 stretch;
+  border-image: url(../img/msgs_bg.png) 163 25 411 21 fill stretch;
+}
+
+/* -----------------------------------==== [Messages (mailboxes) Background Mixin Start] ====-------- */
+
+/* --------------------------------------- Border Radius Mixin Start -------------------------------- */
+
+@mixin border-radius($radius: 25px) {
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+  -o-border-radius: $radius;
+  border-radius: $radius;
+}
+
+/* -----------------------------------==== [Border Radius Mixin End] ====---------------------------- */
+
+/* --------------------------------------- Shadows Mixin Start -------------------------------------- */
+
+@mixin box-shadow($mode: inset,
+$x: 0,
+$y: 0,
+$spread: 8px,
+$size: 0,
+$color: $primary-color--light) {
+  -webkit-box-shadow: $mode $x $y $spread $size $color;
+  -moz-box-shadow: $mode $x $y $spread $size $color;
+  -o-box-shadow: $mode $x $y $spread $size $color;
+  box-shadow: $mode $x $y $spread $size $color;
+}
+
+@mixin text-shadow($x: 0,
+$y: 0,
+$blurr: 2px,
+$color: $primary-color--light) {
+  -webkit-text-shadow: $x $y $blurr $color;
+  -moz-text-shadow: $x $y $blurr $color;
+  -o-text-shadow: $x $y $blurr $color;
+  text-shadow: $x $y $blurr $color;
+}
+
+/* -----------------------------------==== [Shadows Mixin End] ====---------------------------------- */
+
+/* --------------------------------------- Validation Mixin Start ----------------------------------- */
+
+@mixin validation {
+  position: absolute;
+  display: block;
+  width: 100%;
+  max-width: 180px;
+  left: -319px;
+  bottom: 14px;
+  border-bottom: 1px solid $color-gray_dove--light;
+  font-size: $body-font-size;
+  text-align: left;
+  padding: 8px 0px 8px 14px;
+  z-index: 5;
+  // I have used !important to beat Bootstrap in specificity
+  color: $color-validation !important;
+  @include breakpoint(xlarge) {
+    left: -409px;
+  }
+  &:before {
+    content: '';
+    position: absolute;
+    left: -10px;
+    width: 12px;
+    height: 3px;
+    bottom: 1px;
+    background: $color-basic_white;
+    transform: rotate(35deg);
+  }
+  &:after {
+    content: '';
+    position: absolute;
+    right: -140px;
+    width: 140px;
+    height: 30px;
+    bottom: -1px;
+    border-bottom: 1px solid $color-gray_dove--light;
+    background-size: 100%;
+    @include breakpoint(xlarge) {
+      right: -230px;
+      width: 230px;
+    }
+  }
+}
+
+/* -----------------------------------==== [Validation Mixin End] ====------------------------------- */
+
+/* --------------------------------------- Transition Mixin Start ----------------------------------- */
+
+@mixin transition() {
+  -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+  -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+  transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+}
+
+/* -----------------------------------==== [Transition Mixin End] ====------------------------------- */
+
+/* --------------------------------------- Clip-Path Mixin Start ----------------------------------- */
+
+@mixin clip-path($clip) {
+  -webkit-clip-path: $clip;
+  -moz-clip-path: $clip;
+  -ms-clip-path: $clip;
+  clip-path: $clip;
+}
+
+/* -----------------------------------==== [Clip-Path Mixin End] ====------------------------------- */
+
+/* --------------------------------------- Sizing (height and width) Mixin Start ------------------- */
+
+@mixin size($width, $height: $width) {
+  width: $width;
+  height: $height;
+}
+
+/* -----------------------------------==== [Sizing (height and width) Mixin End] ====--------------- */
+
+
+/* -----------------------------------==== [Image (image and image-size) Mixin Start] ====--------------- */
+
+@mixin image($img, $img-size: 100%, $img-repeat: no-repeat) {
+  background-image: url('../img/icon_#{$img}.png');
+  background-size: $img-size;
+  background-repeat: $img-repeat;
+}
+
+/* -----------------------------------==== [Animation Mixin Start] ====--------------- */
+
+@keyframes fadeAnimation {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: .4;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@mixin fadeAnimation($iteration-count) {
+  opacity: 1;
+  animation-name: fadeAnimation;
+  animation-duration: 2.5s;
+  animation-iteration-count: $iteration-count;
+}

@@ -1,0 +1,12 @@
+<template>
+
+  <div class="o-utility-button pull-${position} ${spaced ? '' : 'is-not-spaced'} ${text ? 'o-utility-button--text' : ''}" class.bind="focused ? 'is-active' : ''" click.delegate="select()">
+    <z-icon icon="${icon}" color="white" if.bind="!text"></z-icon>
+    <div class="o-utility-button__text" if.bind="text" loader.bind="processing">
+      <span>${text}</span>
+    </div>
+    <div class="o-utility-button__corners o-utility-button__corners--top"></div>
+    <div class="o-utility-button__corners o-utility-button__corners--bottom"></div>
+  </div>
+
+</template>

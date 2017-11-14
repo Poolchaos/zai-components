@@ -1,0 +1,133 @@
+@import "colors";
+@import "functions";
+@import "mixins";
+
+/*-------------------- BASIC/DEFAULT COLORS -----------------------*/
+
+$color-basic_white: color-palette('color-shade'); //#ffffff;
+$color-basic_black: color-palette('color-shade', 'black'); //#000000;
+$color-basic_red: color-palette('color-red', 'red'); //#ff0000;
+$color-basic_green: color-palette('color-green', 'light'); //#11FE03;
+
+/*------------------ BASIC/DEFAULT COLORS END ---------------------*/
+/*------------------------- APP COLORS ----------------------------*/
+
+$primary-color: color-palette('color-primary'); //#26a8ff;
+$primary-color--dark: color-palette('color-primary', 'dark'); //#2087c4
+$primary-color--light: color-palette('color-primary', 'light'); //#02fbf5;
+$primary-color--away: color-palette('color-primary', 'away'); //#3cc4e8;
+
+$color-aqua: color-palette('color-aqua'); //#117f76;
+$color-aqua--dark: color-palette('color-aqua', 'dark'); //#155659;
+$color-aqua--light: color-palette('color-aqua', 'light'); //#0BA4A6;
+
+$color-blue-regal: color-palette('color-primary', 'blue-regal'); //#003d69;
+$color-blue--light: color-palette('color-primary', 'blue-regal_light'); //#085a8d;
+
+$color-green_accept: color-palette('color-green', 'dark'); //#00a858;
+$color-green_emerald: color-palette('color-green'); //#59c06d;
+
+$color-gray_dove: color-palette('color-shade', 'gray'); //#707880;
+$color-gray_dove--light: color-palette('color-shade', 'dusty-gray'); //#949fa8;
+$color-gray_noble: color-palette('color-shade', 'noble'); //#abb6c2;
+
+$color-gray_alto: color-palette('color-shade', 'silk'); //#d1dfed;
+
+$color-blue_charcoal: color-palette('color-secondary'); //#011418;
+$color-gray_cod: color-palette('color-secondary', 'dark'); //#0b0b0b;
+$color-dark_mine-shaft: color-palette('color-secondary', 'mineshaft'); //#323232;
+
+$color-orange_pizazz: color-palette('color-orange'); //#ffb300;
+$color-orange_poppy: color-palette('color-orange', 'light'); //#f7941d;
+$color-warning: color-palette('color-orange', 'warning'); //#EDA700;
+$color-yellow_corn: color-palette('color-orange', 'yellow'); //#e1ad01;
+
+$color-delete: color-palette('color-red'); //#EC3237;
+$color-pink_fuchsia: color-palette('color-red', 'pink'); //#c754c7;
+
+//TODO: BC: 05/09/16: remove colors that are no longer being used
+$color-blue_elphant: #0f2a42;
+$color-dark_daintree: #01252d;
+$color-blue_prussian: #003a4f;
+
+$color-system: #D78003;
+
+$color-gray_silk: #b8ada5;
+$color-validation: #EDA700;
+
+/*----------------------- APP COLORS END --------------------------*/
+/*-------------------- MODIFIED APP COLORS ------------------------*/
+
+$tertiary-color: shade($primary-color--light, 34%);
+
+/*-------------------- COMPONENT APP COLORS ----------------------*/
+
+$c-border_primary--transparent: rgba($primary-color, 0.5);
+$c-color-blue_matisse: #1E5799;
+//$c-color-blue_regal: #013F67;
+$c-color-blue_regal: #003d66; // color-blue--shade-60
+$c-color-blue_regal_light: #00548c;
+$c-color-blue_regal_lighter: #0064a6;
+$c-color-blue_seagull: #7DB9E8;
+$c-color-error: color-palette('color-red', 'red');
+$c-color-blue_conversations: #003d4a;
+$c-color-inmplayer: #e6f1f6;
+$c-color-gray_trigger-light: #d4d5d6;
+$c-color-gray_trigger-dark: #bcbdbe;
+$c-color-gray_divider: #F4F4F4;
+$c-color-gray_divider-dark: #7c7c7c;
+$c-color_autofill: #2d2d2d;
+$c-color_omni-channel: #002a39;
+$c-body-gradient: #091927;
+$c-color_form-accept: #e6e6e6;
+$c-pulse_first: #749a02;
+$c-pulse_second: #91bd09;
+
+/*------------------ COMPONENT APP COLORS END --------------------*/
+
+/*------------------ MODIFIED APP COLORS END ---------------------*/
+
+/*------------------ FILTER ON COLOR ICONS TO WHITEN THEM --------*/
+
+$whiten: grayscale(10) brightness(10) contrast(10);
+
+/*------------------ END FILTER ON COLOR ICONS TO WHITEN THEM ----*/
+
+/*--------------------- CLIP PATH SHAPES ------------------------*/
+
+$polygon_profile: polygon(46% 1%, 50% 0, 54% 1%, 97% 24%, 99% 27%, 100% 31%, 100% 69%, 99% 73%, 97% 76%, 54% 99%, 50% 100%, 46% 99%, 3% 76%, 1% 73%, 0 69%, 0 31%, 1% 27%, 3% 24%);
+$polygon_control-panel: polygon(100% 0, 100% 10%, 89.5% 67%, 88.5% 70%, 11.5% 70%, 10.5% 67%, 0 10%, 0 0);
+$polygon_back-panel: polygon(20% 0%, 18% 2.5%, 15% 10%, 12% 21%, 9% 38%, 6% 58%, 5% 65%, 0% 100%, 100% 100%, 95% 65%, 94% 58%, 91% 38%, 88% 21%, 85% 10%, 82% 2.5%, 80% 0%);
+$polygon_hud-front: polygon(98% 0, 56% 40%, 44% 40%, 2% 0);
+$polygon_hud-back: polygon(100% 0, 73% 100%, 27% 100%, 0 0);
+$polygon_toggle: polygon(10px 0px, 160px 0px, 100% 50%, 160px 100%, 10px 100%, 0px 50%);
+$polygon_toggle-inner: polygon(10px 100%, 160px 100%, 100% 50%, 160px 31px, 10px 31px, 0px 50%);
+$polygon_trigger: polygon(10px 0, 29px 0, 38px 50%, 29px 100%, 10px 100%, 0 50%);
+$polygon_wing: polygon(11% 0%, 15% 0%, 15% 0%, 100% 0%, 100% 100%, 11% 100%, 2.2% 97%, 0.2% 96.3%, 0% 96%, 0% 4%, 0.2% 3.7%, 2.2% 3%);
+$polygon_conversation-side: polygon(0 0.35%,96% 4%,96% 96%,0 99.65%);
+$polygon_conversation-note: polygon(100% 0, 87% 4%, 75% 6%, 6% 6%, 6% 75%, 4% 87%, 0 100%, 100% 100%);
+$polygon_camp-picture: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);
+$polygon_prompt-header: polygon(2% 34%, 44% 4%, 100% 4%, 100% 100%, 2% 100%);
+$polygon_accordion-split: polygon(0 0, 100% 0, 50% 100%);
+$polygon_index-profile: polygon(43% 2%, 50% 0%, 57% 2%, 93% 24%, 95% 28%, 95% 28%, 95% 69%, 95% 73%, 93% 77%, 57% 98%, 50% 100%, 43% 98%, 5% 77%, 4% 73%, 4% 69%, 4% 31%, 4% 29%, 5% 25%);
+$polygon_unset: none;
+
+/*------------------- CLIP PATH SHAPES END ----------------------*/
+
+/*------------------- PAGE STRUCTURE HEIGHT VALUES ----------------------*/
+
+$page-height: 100%;
+$page_header-height: 9vh;
+$page_footer-height: 72px;
+//utility height is button height (33px) + margin-bottom (20px)
+$page_utility-height: 59px;
+
+$hud-top: 52px;
+$hud-bottom: 60px;
+$hud-status: 330px;
+
+/*~-~-~-~-~-~-~ Global Variables Start ~-~-~-~-~-~-~*/
+
+$border-radius-round: 50%;
+
+/*~-~-~-~-~-~-~ Global Variables End ~-~-~-~-~-~-~*/

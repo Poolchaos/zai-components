@@ -1,0 +1,77 @@
+/* --------------------------------------- Tint Function Start --------------------------------------------- */
+
+@function tint($color, $percentage) {
+  @return mix(white, $color, $percentage);
+}
+
+/* -----------------------------------==== [Tint Function End] ====----------------------------------------- */
+
+/* --------------------------------------- Shade Function Start --------------------------------------------- */
+
+@function shade($color, $percentage) {
+  @return mix(black, $color, $percentage);
+}
+
+/* -----------------------------------==== [Shade Function End] ====----------------------------------------- */
+
+/* --------------------------------------- REM-Calculator Function Start ------------------------------------ */
+
+@function remCalc($size) {
+  $remSize: $size / $font-size-base;
+  @return #{$remSize}rem;
+}
+
+/* -----------------------------------==== [REM-Calculator Function End] ====-------------------------------- */
+
+/* --------------------------------------- HSB Function Start ----------------------------------------------- */
+                                  //EXAMPLE: color: hsb(333, 84, 76)
+
+@function hsb($h-hsb, $s-hsb, $b-hsb, $a: 1) {
+  @if $b-hsb == 0 {
+    @return hsla(0, 0, 0, $a)
+  } @else {
+    $l-hsl: ($b-hsb/2) * (2 - ($s-hsb/100));
+    $s-hsl: ($b-hsb * $s-hsb) / if($l-hsl < 50, $l-hsl * 2, 200 - $l-hsl * 2);
+    @return hsla($h-hsb, $s-hsl, $l-hsl, $a);
+  }
+}
+
+/* --------------------------------------- HSB Limits ------------------------------------------------------ */
+
+$hsb-full: 100;
+$hsb-three_quarter: 75;
+$hsb-half: 50;
+$hsb-one_quarter: 25;
+$hsb-null: 0;
+
+/* -----------------------------------==== [HSB Function End] ====------------------------------------------ */
+
+/* --------------------------------------- Color Palette Function Start ------------------------------------ */
+
+@function color-palette(
+  $name: 'primary',
+  $variant: $color-palette-key,
+  $opacity: 1
+) {
+  $color: null;
+  
+  // Get the color spectrum
+  $color-spectrum: map-get($color-palette, $name);
+  
+  // Get the color variant
+  @if $color-spectrum {
+    $color: map-get($color-spectrum, $variant);
+  }
+  
+  // Get the alpha setting
+  $alpha: if(type-of($opacity) == 'number', $opacity, map-get($color-opacity, $opacity));
+  
+  // Set the alpha of the color
+  @if $alpha {
+    $color: rgba($color, $alpha);
+  }
+  
+  @return $color;
+}
+
+/* -----------------------------------==== [Color Palette Function End] ====-------------------------------- */

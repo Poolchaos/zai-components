@@ -1,0 +1,222 @@
+/*------------------------- APP FONTS ----------------------------*/
+
+$font-size-base: 14px;
+$primary-font-bold: 'NeoTech Bold',
+sans-serif;
+$primary-font-light: 'NeoTech Light',
+sans-serif;
+$primary-font-medium: 'NeoTech Medium',
+sans-serif;
+$primary-font-regular: 'NeoTech',
+sans-serif;
+$digital-font: 'DS-Digital',
+sans-serif;
+
+/*----------------------- APP FONTS END --------------------------*/
+
+
+/*---------------------- APP FONT SIZES --------------------------*/
+
+$body-font-size: 1em;
+
+/*-H1-*/
+
+$lg-h1: 3em;
+$xl-h1: 1.543em;
+
+/*-------------------- APP FONT SIZES END ------------------------*/
+
+
+/* FONT // NEOTECH LIGHT */
+
+@font-face {
+  font-family: 'NeoTech Light';
+  src: url('../fonts/NeoTech-Light.otf') format("opentype");
+}
+
+
+/* FONT // NEOTECH REGULAR */
+
+@font-face {
+  font-family: 'NeoTech';
+  src: url('../fonts/NeoTech.otf') format("opentype");
+}
+
+
+/* FONT // NEOTECH MEDIUM */
+
+@font-face {
+  font-family: 'NeoTech Medium';
+  src: url('../fonts/NeoTech-Medium.otf') format("opentype");
+}
+
+
+/* FONT // NEOTECH BOLD */
+
+@font-face {
+  font-family: 'NeoTech Bold';
+  src: url('../fonts/NeoTech-Bold.otf') format("opentype");
+}
+
+/* FONT // DS DIGITAL */
+
+@font-face {
+  font-family: 'DS-Digital';
+  src: url('../fonts/DS-Digital.woff') format('woff');
+}
+
+
+/*---------------------- font base style ------------------*/
+
+html,
+body {
+  font-family: $primary-font-light;
+  font-size: $font-size-base; //14px
+  color: $color-basic_white;
+  -webkit-font-smoothing: antialiased;
+}
+
+
+/*---------------------- font style objects ------------------*/
+
+@include object('text') {
+  font-family: $primary-font-regular;
+  @include fontsize('medium');
+  color: $color-basic_white;
+  @include element('header') {
+    font-family: $primary-font-regular;
+    @include fontsize('large');
+    color: $color-basic_white;
+    text-transform: uppercase;
+    @include modifier('xlarge') {
+      @include fontsize('xlarge');
+      text-transform: uppercase;
+    }
+    @include modifier ('total') {
+      color: $primary-color--light;
+      text-align: right;
+    }
+  }
+  @include element('hint') {
+    @include fontsize('small');
+    color: $color-gray_dove--light;
+  }
+  @include element('guide') {
+    font-family: $primary-font-regular;
+    @include fontsize('large');
+    color: $primary-color;
+    text-align: center;
+    @include modifier('medium') {
+      @include fontsize('medium');
+    }
+  }
+  @include element('system') {
+    font-family: $primary-font-regular;
+    @include fontsize('medium');
+    color: $color-system;
+  }
+  @include element('label') {
+    font-family: $primary-font-regular;
+    @include fontsize('medium');
+    font-weight: 500;
+    color: $color-basic_white;
+    line-height: 1rem; //14px
+    @include modifier('large') {
+      font-family: $primary-font-regular;
+      @include fontsize('large');
+      font-weight: 500;
+      color: $color-basic_white;
+    }
+  }
+  @include element('gem') {
+    font-family: $primary-font-regular;
+    @include fontsize('small');
+    line-height: 1.143rem; //16px
+    text-overflow: ellipsis;
+    text-align: center;
+    white-space: nowrap;
+  }
+  @include element('status-bar') {
+    font-family: $primary-font-bold;
+    @include fontsize('medium');
+    color: $color-basic_white;
+    text-align: center;
+    text-transform: uppercase;
+  }
+  @include element('button') {
+    font-family: $primary-font-regular;
+    @include fontsize('medium');
+    color: $color-basic_white;
+    text-transform: uppercase;
+    @include modifier('small') {
+      font-family: $primary-font-regular;
+      @include fontsize('small');
+      color: $color-basic_white;
+      text-transform: uppercase;
+    }
+    @include breakpoint(xsmall) {
+      line-height: inherit;
+    }
+  }
+  @include element('button-label') {
+    font-family: $primary-font-regular;
+    @include fontsize('medium');
+    color: $color-basic_white;
+    text-transform: uppercase;
+    font-weight: 500;
+    @include modifier('small') {
+      font-family: $primary-font-regular;
+      @include fontsize('small');
+      color: $color-basic_white;
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+  }
+  @include element('link') {
+    font-family: $primary-font-regular;
+    @include fontsize('small');
+    color: $primary-color;
+    text-decoration: underline;
+    &:hover,
+    &:focus {
+      color: $color-basic_white;
+    }
+  }
+  @include element('input') {
+    font-family: $primary-font-regular;
+    @include fontsize('medium');
+    color: $color-basic_white;
+    line-height: 2rem !important; //28px
+  }
+  @include element('validation') {
+    font-family: $primary-font-regular;
+    @include fontsize("medium");
+    color: $color-warning;
+    @include modifier('capslock') {
+      top: -90px;
+    }
+  }
+  @include element('dropdown') {
+    font-family: $primary-font-regular;
+    @include fontsize('medium');
+    color: $color-basic_white;
+    text-transform: uppercase;
+    @include modifier('label') {
+      font-weight: 500;
+      text-transform: none;
+    }
+  }
+  @include element('conversation-guide') {
+    font-family: $primary-font-regular;
+    @include fontsize('medium');
+    color: $primary-color;
+    text-align: center;
+  }
+  @include element('conversation-list-title') {
+    font-family: $primary-font-regular;
+    @include fontsize('medium');
+    color: $color-basic_white;
+    text-align: left;
+    text-transform: uppercase;
+  }
+}

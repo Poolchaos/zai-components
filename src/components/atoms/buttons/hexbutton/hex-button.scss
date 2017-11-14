@@ -1,0 +1,54 @@
+@include object('button-hex') {
+  width: 100%;
+  margin: 0 auto;
+  opacity: 0.75;
+  cursor: pointer;
+  &:hover {
+    opacity: 1;
+  }
+  @include element('button') {
+    @include clip-path($polygon_profile);
+    display: block;
+    position: relative;
+    width: calc(100% - 4px);
+    margin-left: 2px;
+    padding: 52% 46%;
+    background-color: $primary-color;
+    border: none;
+    border-radius: 0;
+  }
+  @include element('button-inner') {
+    @include clip-path($polygon_profile);
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: calc(100% - 4px);
+    margin: 2px;
+    background: linear-gradient(149deg, black 0%, #333 50%, black 51%, black 100%);
+    overflow: hidden;
+  }
+  @include element('icon') {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 40%;
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    max-width: 100%;
+    margin: 0 auto;
+  }
+  @include element('label') {
+    margin: 6px 0 10px;
+    display: block;
+    text-align: center;
+    @include fontsize('small');
+    color: $color-basic_white;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+}

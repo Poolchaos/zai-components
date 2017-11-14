@@ -1,0 +1,38 @@
+@include object('icon-button') {
+  cursor: pointer;
+  @include modifier('has-hover') {
+    opacity: 0.6;
+    &:hover {
+      opacity: 1;
+    }
+  }
+  @include modifier('size-tiny') {
+    @include size(9px);
+  }
+  @include modifier('size-small') {
+    @include size(13px);
+  }
+  @include modifier('size-medium') {
+    @include size(15px);
+  }
+  @include modifier('size-large') {
+    @include size(18px);
+  }
+  @include modifier('size-xlarge') {
+    @include size(24px);
+  }
+  @include modifier('box') {
+    padding: 9px;
+    border-width: 1px;
+    border-style: solid;
+    &:hover {
+      background-color: rgba($primary-color, 0.2);
+    }
+  }
+  @include modifier('border-color-cyan') {
+    border-color: $primary-color;
+  }
+  @include modifier('border-color-blue') {
+    border-color: $color-blue-regal;
+  }
+}

@@ -1,0 +1,914 @@
+@import "../../../node_modules/sass-bem-constructor/dist/_bem-constructor.scss";
+// centers a child div within a relatively positioned parent div
+@include utility('to-center') {
+  position: absolute;
+  width: 100%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: block;
+  @include modifier('vertical-only') {
+    left: auto;
+    transform: translate(0, -50%);
+  }
+  @include modifier('horizontal-only') {
+    top: auto;
+    transform: translate(-50%, 0);
+  }
+  @include modifier('unblur') {
+    transform: translate(-50%, calc(-50% - 0.5px));
+  }
+  @include modifier('unblur-v') {
+    transform: translate(calc(-50% - 0.5px), calc(-50% - 0.5px));
+  }
+  @include modifier('unblur-v-only') {
+    transform: translate(0, calc(-50% - 0.5px));
+  }
+}
+
+// relative vertical alignment
+@include utility('relative-vertical-align') {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+@include utility('display-inline-block') {
+  display: inline-block;
+}
+
+// adds custom scroll-bar styling to a div that has scrolling enabled
+@include utility('scroll-bar') {
+  &::-webkit-scrollbar {
+    width: 2px;
+    height: 2px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: rgba($c-color-blue_regal, 0.9);
+    border-radius: 4px;
+    transition: 1s ease-in-out;
+  }
+  &::-webkit-scrollbar-track {
+    background-color: rgba($c-color-blue_regal, 0.4);
+  }
+  &:hover {
+    &::-webkit-scrollbar-thumb {
+      background-color: rgba($primary-color, 0.8);
+    }
+  }
+  @include modifier('thin') {
+    &::-webkit-scrollbar {
+      width: 1px;
+    }
+    &::-webkit-scrollbar-thumb {
+      border-radius: 2px;
+    }
+  }
+  @include modifier('white') {
+    &::-webkit-scrollbar-thumb {
+      background-color: rgba($color-basic_white, 0.5);
+    }
+    &::-webkit-scrollbar-track {
+      background-color: rgba($color-basic_white, 0.3);
+    }
+    &:hover {
+      &::-webkit-scrollbar-thumb {
+        background-color: rgba($color-basic_white, 0.8);
+      }
+    }
+  }
+}
+
+// adds custom range slider styling to a range input
+@include utility('range-slider') {
+  -webkit-appearance: none;
+  margin: 18px 0;
+  width: 100%;
+  &:focus {
+    outline: none;
+  }
+  &::-webkit-slider-thumb {
+    box-shadow: inset 0px 0px 8px 3px rgba($color-aqua--light, .3), 1px 1px 1px $color-basic_black;
+    border: 1px solid $primary-color;
+    height: 36px;
+    width: 16px;
+    border-radius: 3px;
+    background: $color-basic_black;
+    cursor: pointer;
+    -webkit-appearance: none;
+    margin-top: -18px;
+  }
+  &::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 2px;
+    cursor: pointer;
+    background: $primary-color;
+    border-radius: 1.3px;
+    border: 0.2px solid $primary-color;
+  }
+  &:focus::-webkit-slider-runnable-track {
+    background: $primary-color;
+  }
+}
+
+// cancels bootstrap column padding
+@include utility("no-padding") {
+  @include modifier("left") {
+    padding-left: 0;
+  }
+  @include modifier("right") {
+    padding-right: 0;
+  }
+}
+
+// adds pointer cursor to an element
+@include utility('cursor-pointer') {
+  cursor: pointer;
+}
+
+// adds move cursor to an element
+@include utility('cursor-move') {
+  cursor: move;
+}
+
+// adds default cursor to an element
+@include utility('cursor-default') {
+  cursor: default;
+}
+
+// prevents pointer/click events
+@include utility('pointer-events-none') {
+  pointer-events: none;
+}
+
+// greys out element and makes it un-clickable
+@include utility('faded-content') {
+  opacity: 0.3;
+  -webkit-filter: grayscale(1);
+  filter: grayscale(1);
+  pointer-events: none;
+  &:hover {
+    opacity: 0.3;
+    -webkit-filter: none;
+  }
+}
+
+/*---------------------- font style utilities ------------------*/
+
+@include utility('text-style') {
+  @include modifier('uppercase') {
+    text-transform: uppercase;
+  }
+  @include modifier('capitalize') {
+    text-transform: capitalize;
+  }
+  @include modifier('none') {
+    text-transform: none;
+  }
+  @include modifier('underline') {
+    text-decoration: underline;
+  }
+  @include modifier('italic') {
+    font-style: italic;
+  }
+  @include modifier('ellipses') {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  @include modifier('link') {
+    cursor: pointer;
+  }
+  @include modifier('clear') {
+    color: transparent;
+  }
+  // u-text-style__size
+  @include element('size') {
+    @include modifier('xsmall') {
+      @include fontsize('xsmall');
+    }
+    @include modifier('small') {
+      @include fontsize('small');
+    }
+    @include modifier('medium') {
+      @include fontsize('medium');
+    }
+    // specific to buttons next to text elements
+    @include modifier('mediumlineheight') {
+      @include fontsize('medium');
+      line-height: 29px;
+    }
+    @include modifier('large') {
+      @include fontsize('large');
+    }
+    @include modifier('xlarge') {
+      @include fontsize('xlarge');
+    }
+    @include modifier('xxlarge') {
+      @include fontsize('xxlarge');
+    }
+  }
+  // u-text-style__align
+  @include element('align') {
+    @include modifier('left') {
+      text-align: left;
+    }
+    @include modifier('center') {
+      text-align: center;
+    }
+    @include modifier('right') {
+      text-align: right;
+    }
+  }
+  // u-text-style__weight
+  @include element('weight') {
+    @include modifier('light') {
+      font-family: $primary-font-light;
+    }
+    @include modifier('regular') {
+      font-family: $primary-font-regular;
+    }
+    @include modifier('medium') {
+      font-family: $primary-font-medium;
+    }
+    @include modifier('bold') {
+      font-family: $primary-font-bold;
+    }
+  }
+  // u-text-style__color
+  @include element('color') {
+    @include modifier('primary') {
+      color: $color-basic_white;
+    }
+    @include modifier('secondary') {
+      color: $primary-color;
+    }
+    @include modifier('cyan') {
+      color: $primary-color;
+    }
+    @include modifier('blue') {
+      color: $c-color-blue_regal;
+    }
+    @include modifier('blue-lighter') {
+      color: $color-blue--shade-20;
+    }
+    @include modifier('tertiary') {
+      color: $tertiary-color;
+    }
+    @include modifier('info') {
+      color: $primary-color--light;
+    }
+    @include modifier('system') {
+      color: $color-system;
+    }
+    @include modifier('accept') {
+      color: $color-green_accept;
+    }
+    @include modifier('warning') {
+      color: $color-warning;
+    }
+    @include modifier('delete') {
+      color: $color-delete;
+    }
+    @include modifier('error') {
+      color: $color-warning;
+    }
+    @include modifier('validation') {
+      color: $color-validation;
+    }
+    @include modifier('dark-grey') {
+      color: $color-gray_dove;
+    }
+    @include modifier('grey') {
+      color: $color-gray_dove--light;
+    }
+    @include modifier('light-grey') {
+      color: $color-gray_noble;
+    }
+    @include modifier('green') {
+      color: $color-basic_green;
+    }
+    @include modifier('available') {
+      color: $color-basic_green;
+    }
+    @include modifier('away') {
+      color: $primary-color;
+    }
+    @include modifier('working') {
+      color: $color-gray_dove--light;
+    }
+    @include modifier('break') {
+      color: $color-orange_pizazz;
+    }
+    @include modifier('lunch') {
+      color: $color-orange_pizazz;
+    }
+    @include modifier('busy') {
+      color: $color-basic_red;
+    }
+    @include modifier('meeting') {
+      color: $color-basic_red;
+    }
+    @include modifier('training') {
+      color: $color-basic_red;
+    }
+    @include modifier('yellow') {
+      color: $color-yellow_corn;
+    }
+    @include modifier('orange') {
+      color: $color-orange_pizazz;
+    }
+    @include modifier('red') {
+      color: $color-basic_red;
+    }
+  }
+  // u-text-style__border
+  @include element('border') {
+    @include modifier('top') {
+      border-top: 1px solid $primary-color;
+      padding-bottom: 5px;
+      margin-bottom: 3px;
+    }
+    @include modifier('bottom') {
+      border-bottom: 1px solid $primary-color;
+      padding-bottom: 5px;
+      margin-bottom: 3px;
+    }
+  }
+  // u-text-style__space
+  @include element('space') {
+    @include modifier('none') {
+      margin: 0;
+    }
+    @include modifier('below') {
+      margin-bottom: 1rem;
+    }
+    @include modifier('above') {
+      margin-top: 10px;
+    }
+  }
+  // u-text-style__line-clamp
+  @include element('line-clamp') {
+    @include modifier('one-line') {
+      -webkit-line-clamp: 1;
+      word-break: break-all;
+      -webkit-box-orient: vertical;
+      display: -webkit-box;
+    }
+    @include modifier('two-line') {
+      -webkit-line-clamp: 2;
+      word-break: break-all;
+      -webkit-box-orient: vertical;
+      display: -webkit-box;
+    }
+    @include modifier('three-line') {
+      -webkit-line-clamp: 3;
+      word-break: break-all;
+      -webkit-box-orient: vertical;
+      display: -webkit-box;
+    }
+  }
+  // u-text-style__family
+  @include element('family') {
+    @include modifier('digital') {
+      font-family: $digital-font, sans-serif;
+    }
+  }
+}
+
+/*---------------------- margin spacing utilities ------------------*/
+
+@include utility('margin') {
+  @include modifier('auto') {
+    margin: auto;
+  }
+  @include modifier('5') {
+    margin: 5px;
+  }
+  @include modifier('10') {
+    margin: 10px;
+  }
+  @include modifier('15') {
+    margin: 15px;
+  }
+  @include modifier('20') {
+    margin: 20px;
+  }
+  @include modifier('25') {
+    margin: 25px;
+  }
+  @include modifier('30') {
+    margin: 30px;
+  }
+  @include modifier('40') {
+    margin: 40px;
+  }
+  @include modifier('50') {
+    margin: 50px;
+  }
+}
+
+@include utility('margin-x') {
+  @include modifier('auto') {
+    margin-right: auto;
+    margin-left: auto;
+  }
+  @include modifier('5') {
+    margin-right: 5px;
+    margin-left: 5px;
+  }
+  @include modifier('10') {
+    margin-right: 10px;
+    margin-left: 10px;
+  }
+  @include modifier('15') {
+    margin-right: 15px;
+    margin-left: 15px;
+  }
+  @include modifier('20') {
+    margin-right: 20px;
+    margin-left: 20px;
+  }
+  @include modifier('25') {
+    margin-right: 25px;
+    margin-left: 25px;
+  }
+  @include modifier('30') {
+    margin-right: 30px;
+    margin-left: 30px;
+  }
+  @include modifier('40') {
+    margin-right: 40px;
+    margin-left: 40px;
+  }
+  @include modifier('50') {
+    margin-right: 50px;
+    margin-left: 50px;
+  }
+}
+
+@include utility('margin-y') {
+  @include modifier('auto') {
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+  @include modifier('5') {
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
+  @include modifier('10') {
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  @include modifier('15') {
+    margin-top: 15px;
+    margin-bottom: 15px;
+  }
+  @include modifier('20') {
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+  @include modifier('25') {
+    margin-top: 25px;
+    margin-bottom: 25px;
+  }
+  @include modifier('30') {
+    margin-top: 30px;
+    margin-bottom: 30px;
+  }
+  @include modifier('40') {
+    margin-top: 40px;
+    margin-bottom: 40px;
+  }
+  @include modifier('50') {
+    margin-top: 50px;
+    margin-bottom: 50px;
+  }
+}
+
+@include utility('margin-top') {
+  @include modifier('auto') {
+    margin-top: auto;
+  }
+  @include modifier('5') {
+    margin-top: 5px;
+  }
+  @include modifier('10') {
+    margin-top: 10px;
+  }
+  @include modifier('15') {
+    margin-top: 15px;
+  }
+  @include modifier('20') {
+    margin-top: 20px;
+  }
+  @include modifier('25') {
+    margin-top: 25px;
+  }
+  @include modifier('30') {
+    margin-top: 30px;
+  }
+  @include modifier('40') {
+    margin-top: 40px;
+  }
+  @include modifier('50') {
+    margin-top: 50px;
+  }
+}
+
+@include utility('margin-right') {
+  @include modifier('auto') {
+    margin-right: auto;
+  }
+  @include modifier('5') {
+    margin-right: 5px;
+  }
+  @include modifier('10') {
+    margin-right: 10px;
+  }
+  @include modifier('15') {
+    margin-right: 15px;
+  }
+  @include modifier('20') {
+    margin-right: 20px;
+  }
+  @include modifier('25') {
+    margin-right: 25px;
+  }
+  @include modifier('30') {
+    margin-right: 30px;
+  }
+  @include modifier('40') {
+    margin-right: 30px;
+  }
+  @include modifier('50') {
+    margin-right: 30px;
+  }
+}
+
+@include utility('margin-bottom') {
+  @include modifier('auto') {
+    margin-bottom: auto;
+  }
+  @include modifier('5') {
+    margin-bottom: 5px;
+  }
+  @include modifier('10') {
+    margin-bottom: 10px;
+  }
+  @include modifier('15') {
+    margin-bottom: 15px;
+  }
+  @include modifier('20') {
+    margin-bottom: 20px;
+  }
+  @include modifier('25') {
+    margin-bottom: 25px;
+  }
+  @include modifier('30') {
+    margin-bottom: 30px;
+  }
+  @include modifier('40') {
+    margin-bottom: 40px;
+  }
+  @include modifier('50') {
+    margin-bottom: 50px;
+  }
+}
+
+@include utility('margin-left') {
+  @include modifier('auto') {
+    margin-left: auto;
+  }
+  @include modifier('5') {
+    margin-left: 5px;
+  }
+  @include modifier('10') {
+    margin-left: 10px;
+  }
+  @include modifier('15') {
+    margin-left: 15px;
+  }
+  @include modifier('20') {
+    margin-left: 20px;
+  }
+  @include modifier('25') {
+    margin-left: 25px;
+  }
+  @include modifier('30') {
+    margin-left: 30px;
+  }
+  @include modifier('40') {
+    margin-left: 40px;
+  }
+  @include modifier('50') {
+    margin-left: 50px;
+  }
+}
+
+/*---------------------- padding spacing utilities ------------------*/
+
+@include utility('padding-top') {
+  @include modifier('5') {
+    padding-top: 5px;
+  }
+  @include modifier('10') {
+    padding-top: 10px;
+  }
+  @include modifier('15') {
+    padding-top: 15px;
+  }
+  @include modifier('20') {
+    padding-top: 20px;
+  }
+  @include modifier('25') {
+    padding-top: 25px;
+  }
+  @include modifier('30') {
+    padding-top: 30px;
+  }
+  @include modifier('40') {
+    padding-top: 40px;
+  }
+  @include modifier('50') {
+    padding-top: 50px;
+  }
+}
+
+@include utility('padding-right') {
+  @include modifier('5') {
+    padding-right: 5px;
+  }
+  @include modifier('10') {
+    padding-right: 10px;
+  }
+  @include modifier('15') {
+    padding-right: 15px;
+  }
+  @include modifier('20') {
+    padding-right: 20px;
+  }
+  @include modifier('25') {
+    padding-right: 25px;
+  }
+  @include modifier('30') {
+    padding-right: 30px;
+  }
+  @include modifier('40') {
+    padding-right: 30px;
+  }
+  @include modifier('50') {
+    padding-right: 30px;
+  }
+}
+
+@include utility('padding-bottom') {
+  @include modifier('5') {
+    padding-bottom: 5px;
+  }
+  @include modifier('10') {
+    padding-bottom: 10px;
+  }
+  @include modifier('15') {
+    padding-bottom: 15px;
+  }
+  @include modifier('20') {
+    padding-bottom: 20px;
+  }
+  @include modifier('25') {
+    padding-bottom: 25px;
+  }
+  @include modifier('30') {
+    padding-bottom: 30px;
+  }
+  @include modifier('40') {
+    padding-bottom: 40px;
+  }
+  @include modifier('50') {
+    padding-bottom: 50px;
+  }
+}
+
+@include utility('padding-left') {
+  @include modifier('5') {
+    padding-left: 5px;
+  }
+  @include modifier('10') {
+    padding-left: 10px;
+  }
+  @include modifier('15') {
+    padding-left: 15px;
+  }
+  @include modifier('20') {
+    padding-left: 20px;
+  }
+  @include modifier('25') {
+    padding-left: 25px;
+  }
+  @include modifier('30') {
+    padding-left: 30px;
+  }
+  @include modifier('40') {
+    padding-left: 40px;
+  }
+  @include modifier('50') {
+    padding-left: 50px;
+  }
+}
+
+// Icon Size
+
+@include utility('icon-size') {
+  display: block;
+  float: left;
+  @include modifier('small') {
+    @extend .u-icon-size;
+    @include size(18px);
+  }
+  @include modifier('medium') {
+    @extend .u-icon-size;
+    @include size(22px);
+  }
+  @include modifier('large') {
+    @extend .u-icon-size;
+    @include size(26px);
+  }
+  @include modifier('with-text-left') {
+    margin-left: 4px;
+  }
+  @include modifier('with-text-right') {
+    margin-right: 4px;
+  }
+}
+
+// Centering Container
+
+@include utility('center-container') {
+  margin: 0 auto;
+}
+
+// Hides an element by setting opacity to zero
+
+@include utility('hidden') {
+  opacity: 0;
+}
+
+/*---------------------- flexbox utilities ------------------*/
+
+// display
+.u-flex {
+  display: flex;
+}
+
+.u-inline-flex {
+  display: inline-flex;
+}
+
+// flex-direction
+.u-flex-column {
+  flex-direction: column;
+}
+
+// flex-wrap
+.u-flex-wrap {
+  flex-wrap: wrap;
+}
+
+// align-items
+.u-align-items-start {
+  align-items: flex-start;
+}
+
+.u-align-items-end {
+  align-items: flex-end;
+}
+
+.u-align-items-center {
+  align-items: center;
+}
+
+.u-align-items-baseline {
+  align-items: baseline;
+}
+
+.u-align-items-stretch {
+  align-items: stretch;
+}
+
+// align-self
+.u-align-self-start {
+  align-self: flex-start;
+}
+
+.u-align-self-end {
+  align-self: flex-end;
+}
+
+.u-align-self-center {
+  align-self: center;
+}
+
+.u-align-self-baseline {
+  align-self: baseline;
+}
+
+.u-align-self-stretch {
+  align-self: stretch;
+}
+
+// justify-content
+.u-justify-content-start {
+  justify-content: flex-start;
+}
+
+.u-justify-content-end {
+  justify-content: flex-end;
+}
+
+.u-justify-content-center {
+  justify-content: center;
+}
+
+.u-justify-content-between {
+  justify-content: space-between;
+}
+
+.u-justify-content-around {
+  justify-content: space-around;
+}
+
+// align-content
+.u-align-content-start {
+  align-content: flex-start;
+}
+
+.u-align-content-end {
+  align-content: flex-end;
+}
+
+.u-align-content-center {
+  align-content: center;
+}
+
+.u-align-content-between {
+  align-content: space-between;
+}
+
+.u-align-content-around {
+  align-content: space-around;
+}
+
+.u-align-content-stretch {
+  align-content: stretch;
+}
+
+// order
+.u-flex-last {
+  order: 999;
+}
+
+.u-flex-first {
+  order: -999;
+}
+
+// flex-grow
+.u-flex-grow-auto {
+  flex: 1 1 auto;
+}
+
+// flex-shrink
+.u-flex-grow-none {
+  flex: 0 0 auto;
+}
+
+/*---------------------- size utilities ------------------*/
+
+.u-full-width {
+  width: 100%;
+}
+
+.u-min-width-0 {
+  min-width: 0;
+}
+
+.u-min-height-0 {
+  min-height: 0;
+}
+
+.u-full-height {
+  height: 100%;
+}
+
+
+/*------------------- show an element only when the parent element is hovered -----------------*/
+.u-show-child-element-on-hover {
+  cursor: pointer;
+  & .u-show-child-element-on-hover__child {
+    opacity: 0 !important;
+  }
+  &:hover {
+    & .u-show-child-element-on-hover__child {
+      opacity: 1 !important;
+    }
+  }
+}

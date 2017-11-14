@@ -1,0 +1,67 @@
+@import "../../../node_modules/sass-bem-constructor/dist/_bem-constructor.scss";
+ //NOTE: This is to override Aurelia Validation framework styles
+.has-warning .form-control {
+  border-color: $color-basic_white;
+}
+
+.has-success {
+  margin-top: 0px;
+}
+
+.has-warning p {
+  @include validation;
+}
+
+@include component('validation') {
+  p {
+    border: none;
+    left: 0;
+    padding: 0;
+    padding-left: 15px;
+    width: 100%;
+    max-width: 100%;
+    top: 110%;
+    margin: 0;
+  }
+  p:before,
+  p:after {
+    display: none;
+  }
+  @include modifier('other') {
+    p {
+      height: 18px;
+    }
+  }
+  @include modifier('small-top') {
+    p {
+      padding: 0;
+      bottom: 100%;
+      text-align: center;
+      font-size: 0.857rem;
+    }
+  }
+  @include modifier('pull-top') {
+    p {
+      padding-left: 13px;
+      bottom: -80%;
+    }
+  }
+  @include modifier('center') {
+    p {
+      padding: 0px;
+      text-align: center;
+      bottom: -70%;
+    }
+  }
+  @include modifier('bottom') {
+    p {
+      bottom: -30px;
+    }
+  }
+  @include modifier('bottom-input') {
+    p {
+      top: 28px;
+    }
+  }
+}
+// END NOTE

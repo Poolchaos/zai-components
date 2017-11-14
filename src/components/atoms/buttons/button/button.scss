@@ -1,0 +1,62 @@
+@include object('zbutton') {
+  @include fontsize(medium);
+  text-align: center;
+  margin: 15px auto;
+  text-transform: uppercase;
+  padding: 8px 10px;
+  border: 1px solid $primary-color;
+  width: 80%;
+  &:hover {
+    background-color: rgba($primary-color, 0.2);
+    cursor: pointer;
+  }
+  @include state('active') {
+    background-color: rgba($primary-color, 0.2);
+  }
+  @include modifier('color-white') {
+    border: 1px solid tint($color-basic_black, 35);
+    &:hover {
+      background-color: rgba($color-basic_white, 0.2);
+      cursor: pointer;
+    }
+  }
+  @include modifier('vheight') {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    margin: 0;
+  }
+  @include modifier('footer') {
+    margin-right: 0;
+    padding: 12px 30px;
+    width: auto;
+    outline: 0;
+    cursor: pointer;
+    display: inline-block;
+    & .o-zbutton--no-margins {
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+  }
+  @include modifier('large') {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+  @include modifier('small') {
+    margin: 0 auto;
+    padding: 4px 10px;
+    display: inline-block;
+    max-width: 160px;
+  }
+  @include modifier('auto') {
+    display: inline-block;
+    margin: 15px auto;
+    width: inherit;
+    padding: 8px 30px;
+  }
+  @include modifier('no-margins') {
+      margin: 0;
+  }
+}

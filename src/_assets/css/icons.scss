@@ -1,0 +1,304 @@
+@include object('icon') {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  height: 100%;
+  @include modifier('small') {
+    width: 30%;
+  }
+  @include modifier('medium') {
+    width: 50%;
+  }
+  @include modifier('large') {
+    width: 100%;
+  }
+  // parent has to be relative
+  @include modifier('center') {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(calc(-50% - .5px)) translateY(calc(-50% - .5px));
+  }
+  @include modifier('default') {
+    width: 18px;
+    height: 18px;
+  }
+  @include modifier('right') {
+    margin-left: 5px;
+  }
+  @include modifier('left') {
+    margin-right: 5px;
+  }
+  @include modifier('waiting') {
+    background-image: url('../img/icon_time.png');
+  }
+  @include modifier('offline') {
+    background-image: url('../img/icon_offline.png');
+  }
+  @include modifier('info') {
+    background-image: url('../img/icon_white_info.png');
+  }
+  @include modifier('call') {
+    background-image: url('../img/icon_blue_call.png');
+  }
+  @include modifier('email') {
+    background-image: url('../img/icon_blue_email.png');
+  }
+  @include modifier('email-open-blue') {
+    background-image: url('../img/icon_invitations-blue.png');
+  }
+  @include modifier('sms') {
+    background-image: url('../img/icon_blue_sms.png');
+  }
+  @include modifier('kiosk') {
+    background-image: url('../img/icon_blue_kiosk.png');
+  }
+  @include modifier('call') {
+    background-image: url('../img/icon_blue_call.png');
+  }
+  @include modifier('time') {
+    background-image: url('../img/icon_blue_time.png');
+  }
+  @include modifier('schedule') {
+    background-image: url('../img/icon_blue_schedule.png');
+  }
+  @include modifier('chevron') {
+    background-image: url('../img/icon_accordian-nav.png');
+  }
+  @include modifier('sound') {
+    background-image: url('../img/icon_sound.png');
+  }
+  @include modifier('sound-off') {
+    background-image: url('../img/icon_sound-off.png');
+  }
+  @include modifier('good') {
+    background-image: url('../img/smiley-icon.png');
+  }
+  @include modifier('bad') {
+    background-image: url('../img/sad-icon.png');
+  }
+  @include modifier('surveys') {
+    background-image: url('../img/icon_blue_surveys.png');
+  }
+  @include modifier('play') {
+    background-image: url('../img/icon_white_media-player--play-button.png');
+  }
+  @include modifier('pause') {
+    background-image: url('../img/icon_media-player--pause-button.png');
+  }
+  /* blue */
+  @include modifier('service-blue') {
+    background-image: url('../img/icon_blue_services.png');
+  }
+  @include modifier('wait-time-blue') {
+    background-image: url('../img/icon_blue_waitTime.png');
+  }
+  @include modifier('qa-report') {
+    background-image: url('../img/icon_blue_qa_report.png');
+  }
+  @include modifier('conversation-report') {
+    background-image: url('../img/icon_blue_conversation_report.png');
+  }
+  @include modifier('download-blue') {
+    background-image: url('../img/icon_blue_download.png');
+  }
+  @include modifier('zip-file-blue') {
+    background-image: url('../img/icon_conversation-download-zip.png');
+  }
+  @include modifier('csv-file-blue') {
+    background-image: url('../img/icon_blue_csv-file.png');
+  }
+  @include modifier('agent-blue') {
+    background-image: url('../img/icon_blue_role_agent.png');
+  }
+  @include modifier('members-blue') {
+    background-image: url('../img/icon_blue_members.png');
+  }
+  @include modifier('qa-form-blue') {
+    background-image: url('../img/icon_blue_qa_form.png');
+    width: 16px !important;
+  }
+  @include modifier('calendar-blue') {
+    background-image: url('../img/icon_blue_calendar.png');
+  }
+  @include modifier('confirm-blue') {
+    background-image: url('../img/icon_blue_confirm.png');
+  }
+  @include modifier('close-blue') {
+    background-image: url('../img/icon_blue-close.png');
+  }
+  @include modifier('play-blue') {
+    background-image: url('../img/icon_blue_play.png');
+  }
+  @include modifier('attachment-blue') {
+    background-image: url('../img/icon_conversation_attachement.png');
+  }
+  @include modifier('ellipsis-blue') {
+    background-image: url('../img/icon_conversation_ellipsis.png');
+  }
+  @include modifier('zai-logo-only-blue') {
+    background-image: url('../img/zai_logo_only-blue.png');
+  }
+  @include modifier('lock-blue') {
+    background-image: url('../img/icon_class-of-service-blue.png');
+  }
+  @include modifier('member-blue') {
+    background-image: url('../img/icon_blue-number-member.png');
+  }
+  @include modifier('overview') {
+    background-image: url('../img/icon_blue_overview.png');
+  }
+  @include modifier('usage') {
+    background-image: url('../img/icon_blue_usage.png');
+  }
+  @include modifier('numbers') {
+    background-image: url('../img/icon_blue_numbers.png');
+  }
+  @include modifier('buycredit') {
+    background-image: url('../img/icon_blue_payment.png');
+  }
+  @include modifier('autorecharge') {
+    background-image: url('../img/icon_blue_recharge.png');
+  }
+  @include modifier('settings') {
+    background-image: url('../img/icon_blue_settings.png');
+  }
+  @include modifier('visa-blue') {
+    background-image: url('../img/icon_blue_visa.png');
+  }
+  @include modifier('mastercard-blue') {
+    background-image: url('../img/icon_blue_mastercard.png');
+  }
+  @include modifier('manage-cards-blue') {
+    background-image: url('../img/icon_blue_manage_cards.png');
+  }
+  @include modifier('search') {
+    background-image: url('../img/icon_search.png');
+  }
+  @include modifier('add') {
+    background-image: url('../img/icon_add.png');
+  }
+  @include modifier('remove') {
+    background-image: url('../img/icon_remove.png');
+  }
+  @include modifier('cancel') {
+    background-image: url('../img/icon_cancel.png');
+  }
+  @include modifier('accept') {
+    background-image: url('../img/icon_accept.png');
+  }
+  @include modifier('filter') {
+    background-image: url('../img/icon_filter.png');
+  }
+  @include modifier('back') {
+    background-image: url('../img/icon_back.png');
+  }
+  @include modifier('back-blue') {
+    background-image: url('../img/icon_conversation-back.png');
+  }
+  @include modifier('quote-left') {
+    background-image: url('../img/icon_quote-left.png');
+  }
+  /* end blue */
+  @include state('active') {
+    -webkit-filter: none;
+  }
+  @include state('inactive') {
+    -webkit-filter: grayscale(1);
+  }
+}
+
+@include object('icon-container') {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 40%;
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  max-width: 100%;
+  margin: 0 auto;
+  &:focus {
+    outline: none;
+  }
+  @include modifier('small-button') {
+    background-size: 60%;
+  }
+  @include modifier('link') {
+    background-image: url(../img/icon_conversation-link.png);
+  }
+  @include modifier('unlink') {
+    background-image: url(../img/icon_conversation-unlink.png);
+  }
+  @include modifier('share-screen') {
+    background-image: url(../img/icon_conversation-screenshare.png);
+  }
+  @include modifier('scan-finger') {
+    background-image: url(../img/icon_conversation-fingerprint.png);
+  }
+  @include modifier('sign-doc') {
+    background-image: url(../img/icon_conversation-signature.png);
+  }
+  @include modifier('scan-doc') {
+    background-image: url(../img/icon_conversation-scan.png);
+  }
+  @include modifier('view-doc-history') {
+    background-image: url(../img/icon_conversation-history.png);
+  }
+  @include modifier('add-note') {
+    background-image: url(../img/icon_conversation-note.png);
+  }
+  @include modifier('tag') {
+    background-image: url(../img/icon_conversation-tag.png);
+  }
+  @include modifier('back') {
+    background-image: url(../img/icon_conversation-back.png);
+  }
+  @include modifier('redo') {
+    background-image: url(../img/icon_conversation-redo.png);
+  }
+  @include modifier('accept') {
+    background-image: url(../img/icon_conversation-accept.png);
+  }
+  @include modifier('close') {
+    background-image: url(../img/icon_conversation-close.png);
+  }
+  @include modifier('end-call') {
+    background-image: url(../img/icon_conversation-end-call.png);
+  }
+  @include modifier('cancel') {
+    background-image: url(../img/icon_conversation-close.png);
+  }
+  @include modifier('download-all') {
+    background-image: url(../img/icon_conversation-download-zip.png);
+  }
+  @include modifier('zoom') {
+    background-image: url(../img/icon_conversation-zoom.png);
+  }
+  @include modifier('omni-channel-activate') {
+    background-image: url(../img/icon_conversation-omni-channel-activate.png);
+  }
+  @include modifier('home') {
+    background-image: url(../img/icon_hud_home.png);
+  }
+  @include modifier('sms') {
+    background-image: url(../img/icon_conversation-sms.png);
+  }
+  @include modifier('call') {
+    background-image: url(../img/icon_conversation-phone.png);
+  }
+  @include modifier('email') {
+    background-image: url(../img/icon_conversation-email.png);
+  }
+  @include modifier('placeholder') {
+    background-image: url(../img/icon_conversation-placeholder.png);
+  }
+  @include modifier('save') {
+    background-image: url(../img/icon_conversation-save.png);
+  }
+  @include modifier('add-note') {
+    background-image: url(../img/icon_conversation-add-note.png);
+  }
+}

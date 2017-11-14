@@ -1,0 +1,203 @@
+$png-icon-map: (
+  round-inbound: 'icon_round_inbound-call.png',
+  round-outbound: 'icon_round_outbound-call.png',
+  round-sms: 'sms-icon.png',
+  round-no-interaction: 'icon_conversation-no-interaction.png',
+  round-email: 'icon_email.png',
+  round-internal: 'kiosk_internal_call.png',
+  round-kiosk: 'icon_round-kiosk-call.png',
+  conversation-contact-detail: 'icon_conversation-contact-detail.png',
+  conversation-agent: 'icon_conversation-agent.png',
+  sound: 'icon_sound.png',
+  flow:'icon_blue_number-flow.png',
+  skill-groups: 'icon_blue-group-skills.png',
+  call-arrow-white: 'callType_arrow-white.png',
+  view: 'icon_view.png',
+  administrator: 'icon_blue_role_admin.png',
+  agent: 'icon_blue_role_agent.png',
+  qa: 'icon_blue_role_qa.png',
+  qa-manager: 'icon_blue_role_qa-manager.png',
+  team-leader: 'icon_blue_role_team-leader.png',
+  office-employee: 'icon_blue_role_office-employee.png',
+  campaign-manager: 'icon_blue_campaignmanager.png',
+  coming-soon: 'icon_blue_coming-soon.png',
+  coming-soon-small: 'icon_blue_coming-soon-small.png',
+  mailbox: 'icon_blue_mailbox.png',
+  callback: 'icon_blue_callback.png',
+  campaign: 'icon_campaigns.png',
+  refresh: 'icon_conversation-redo.png',
+  redo: 'icon_conversation-redo.png',
+  menu: 'icon_menu.png',
+  dash: 'icon_blue_dash.png',
+  overview: 'icon_blue_qa_form.png',
+  buycredit: 'icon_blue_manage_cards.png',
+  buynumbers: 'icon_blue_numbers.png',
+  viewusage: 'icon_blue_usage.png',
+  quote-left: 'icon_quote-left.png',
+  info: 'icon_info.png'
+);
+
+$svg-icon-map: (
+  sms: 'svg/comments.svg',
+  member: 'svg/member.svg',
+  channel-website: 'svg/call-web.svg',
+  channel-sms: 'svg/comments.svg',
+  channel-email: 'svg/envelope-closed.svg',
+  close: 'svg/times.svg',
+  cancel: 'svg/times.svg',
+  add: 'svg/plus.svg',
+  reports: 'svg/bars.svg',
+  manage-qa: 'svg/file-text-pencil.svg',
+  cos: 'svg/unlock-alt.svg',
+  email: 'svg/envelope-closed.svg',
+  remove: 'svg/trash.svg',
+  edit: 'svg/pencil.svg',
+  interactionlog: 'svg/flag.svg',
+  back: 'svg/chevron-left.svg',
+  download: 'svg/cloud-download.svg',
+  prospectlist: 'icon_prospectlist.svg',
+  sites: 'svg/map-marker.svg',
+  numbers: 'svg/address-book.svg',
+  office-flow: 'svg/chair.svg',
+  headphones: 'svg/headphones.svg',
+  contact-centre-flow: 'svg/headphones.svg',
+  channel-incoming: 'svg/call-inbound.svg',
+  channel-outgoing: 'svg/call-outbound.svg',
+  channel-kiosk: 'svg/kiosk.svg',
+  skills: 'svg/wrench-pencil.svg',
+  confirm: 'svg/check.svg',
+  accept: 'svg/check.svg',
+  invitations: 'svg/envelope-open.svg',
+  members: 'svg/members.svg',
+  worktypes: 'svg/briefcase.svg',
+  account: 'svg/credit-card.svg',
+  knowledge: 'svg/graduation-cap.svg',
+  stats: 'svg/bar-chart.svg',
+  surveys: 'svg/file-checklist.svg',
+  services: 'svg/cog.svg',
+  dart: 'svg/dart.svg',
+  address-book: 'svg/address-book.svg',
+  arrow-chart: 'svg/arrow-chart.svg',
+  bar-chart: 'svg/bar-chart.svg',
+  briefcase: 'svg/briefcase.svg',
+  call: 'svg/call.svg',
+  call-inbound: 'svg/call-inbound.svg',
+  call-outbound: 'svg/call-outbound.svg',
+  call-web: 'svg/call-web.svg',
+  chair: 'svg/chair.svg',
+  channels: 'svg/channels.svg',
+  check: 'svg/check.svg',
+  chevron-down: 'svg/chevron-down.svg',
+  chevron-up: 'svg/chevron-up.svg',
+  chevron-left: 'svg/chevron-left.svg',
+  chevron-right: 'svg/chevron-right.svg',
+  cloud: 'svg/cloud.svg',
+  cloud-download: 'svg/cloud-download.svg',
+  cloud-upload: 'svg/cloud-upload.svg',
+  cog: 'svg/cog.svg',
+  comments: 'svg/comments.svg',
+  credit-card: 'svg/credit-card.svg',
+  envelope-closed: 'svg/envelope-closed.svg',
+  envelope-open: 'svg/envelope-open.svg',
+  exclamation: 'svg/exclamation.svg',
+  exclamation-triangle: 'svg/exclamation-triangle.svg',
+  feather: 'svg/feather.svg',
+  file-checklist: 'svg/file-checklist.svg',
+  filter: 'svg/filter.svg',
+  flag: 'svg/flag.svg',
+  frown: 'svg/frown.svg',
+  graduation-cap: 'svg/graduation-cap.svg',
+  link: 'svg/link.svg',
+  maximise: 'svg/maximise.svg',
+  minimise: 'svg/minimise.svg',
+  paperclip: 'svg/paperclip.svg',
+  paper-plane: 'svg/paper-plane.svg',
+  pencil: 'svg/pencil.svg',
+  pending: 'svg/pending.svg',
+  play: 'svg/play.svg',
+  pause: 'svg/pause.svg',
+  plus: 'svg/plus.svg',
+  reply: 'svg/reply.svg',
+  search: 'svg/search.svg',
+  smile: 'svg/smile.svg',
+  teams: 'svg/teams.svg',
+  text-size: 'svg/text-size.svg',
+  times: 'svg/times.svg',
+  trash: 'svg/trash.svg',
+  workflows: 'svg/workflows.svg',
+  unlock-alt: 'svg/unlock-alt.svg',
+  wrench-pencil: 'svg/wrench-pencil.svg',
+  comments-empty: 'svg/comments-empty.svg',
+  bell: 'svg/bell.svg',
+  power: 'svg/power.svg',
+  home: 'svg/home.svg',
+  speaker: 'svg/speaker.svg',
+  speaker-mute: 'svg/speaker-mute.svg',
+  calendar: 'svg/calendar.svg',
+  folder: 'svg/folder.svg'
+);
+
+$icon-map: map-merge($png-icon-map, $svg-icon-map);
+
+@include object('z-icon') {
+  display: block;
+  position: relative;
+  height: 100%;
+  width: 100%;
+  padding: 50%;
+  background-position: center;
+  -webkit-background-size: contain;
+  background-size: contain;
+  background-repeat: no-repeat;
+  @include modifier('color-blue-lighter') {
+    @include icon-blue-lighter();
+  }
+  @include modifier('color-blue-dark') {
+    @include icon-blue-dark();
+  }
+  @include modifier('color-white') {
+    @include whiten();
+  }
+  @include modifier('color-green') {
+    @include icon-green();
+  }
+  @include modifier('color-red') {
+    @include icon-red();
+  }
+  @include modifier('color-grey') {
+    @include icon-grey();
+  }
+  @include modifier('color-orange') {
+    @include icon-orange();
+  }
+  @include modifier('size-tiny') {
+    width: 9px;
+    height: 9px;
+    padding: 0;
+  }
+  @include modifier('size-small') {
+    width: 13px;
+    height: 13px;
+    padding: 0;
+  }
+  @include modifier('size-medium') {
+    width: 15px;
+    height: 15px;
+    padding: 0;
+  }
+  @include modifier('size-large') {
+    width: 18px;
+    height: 18px;
+    padding: 0;
+  }
+  @include modifier('size-xlarge') {
+    width: 24px;
+    height: 24px;
+    padding: 0;
+  }
+  @each $name, $value in $icon-map {
+    @include modifier($name) {
+      background-image: url('../img/#{$value}');
+    }
+  }
+}

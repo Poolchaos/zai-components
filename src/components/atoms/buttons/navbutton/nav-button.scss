@@ -1,0 +1,37 @@
+@include object('button-nav') {
+  display: flex;
+  align-items: center;
+  @include fontsize(medium);
+  width: 100%;
+  min-height: 70px;
+  padding: 0 20px;
+  border: 1px solid rgba($c-color-blue_regal, 0.8);
+  background-color: rgba($c-color-blue_regal, 0.2);
+  margin-bottom: 10px;
+  &:hover {
+    background-color: rgba($primary-color, 0.2);
+    border: 1px solid $primary-color;
+  }
+  &:focus,
+  &:visited {
+    outline: none;
+  }
+  @include breakpoint(small) {
+    flex-direction: column;
+    padding: 10px 20px;
+    min-height: 0;
+  }
+  @include element('icon') {
+    margin-right: 12px;
+    @include breakpoint(small) {
+      margin-right: 0;
+    }
+  }
+  @include element('label') {
+    text-align: left;
+    margin-top: 4px;
+    @include breakpoint(small) {
+      text-align: center;
+    }
+  }
+}

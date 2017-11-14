@@ -1,0 +1,28 @@
+<template>
+  <h3>Components</h3>
+  <h4>Atoms</h5>
+
+    <div repeat.for="atom of index.atoms">
+      <button class="o-button__glass-rectangle o-button__glass-rectangle--secondary-color o-text__button pull-left" click.delegate="viewComponent(atom)">${atom.elementName}</button>
+    </div>
+
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <component-viewer>
+      <div style="min-height: 200px;">
+        <compose view.bind="selectedView" view-model.bind="selectedViewModel"></compose>
+      </div>
+    </component-viewer>
+
+    <div class="col-6 col-md-6 pull-left">
+      <h4>Html</h4>
+      <pre class="prettyprint js-component-html"> No Content</pre>
+    </div>
+
+    <div class="col-6 col-md-6 pull-right">
+      <h4>JavaScript</h4>
+      <pre class="prettyprint js-component-javascript"> // No Content </pre>
+    </div>
+</template>
