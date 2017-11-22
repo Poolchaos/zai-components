@@ -3,14 +3,33 @@
     Example:
   </div>
   <div class="col-11 col-md-11 pull-left" style="display:block;height: 130px;max-width: 300px">
+
+    <!-- ATOMS START -->
     <div style="width: 130px;">
       <z-button if.bind="elementName === 'z-button'" location.bind="data.location" size.bind="data.size || 'medium'" active.bind="data.active" nomargins.bind="data.nomargins || true" color.bind="data.colors">Button example 1</z-button>
       <z-button-hex if.bind="elementName === 'z-button-hex'" label.bind="data.label || 'Button example 2'" icon.bind="data.icon || 'info'" color.bind="data.color"></z-button-hex>
       <z-icon-button if.bind="elementName === 'z-icon-button'" size.bind="data.size" icon.bind="data.icon || 'info'" color.bind="data.color" title.bind="data.title" box.bind="data.box" bordercolor.bind="data.bordercolor" hashover.bind="data.hashover"></z-icon-button>
       <z-button-nav if.bind="elementName === 'z-button-nav'" icon.bind="data.icon || 'flag'"> click me</z-button-nav>
       <z-utility-button if.bind="elementName === 'z-utility-button'" icon.bind="data.icon || 'flag'" text.bind="data.text" focused.bind="data.focused" spaced.bind="data.spaced" position.bind="data.position" processing.bind="data.processing"></z-utility-button>
-      <z-utility-button-text if.bind="elementName === 'z-utility-button-text'" label.bind="data.label" position.bind="data.position" spaced.bind="data.spaced" loadcheck.bind="data.loadcheck"></z-utility-button-text>
+      <z-utility-button-text if.bind="elementName === 'z-utility-button-text'" label.bind="data.label || 'Example button'" position.bind="data.position || 'left'" spaced.bind="data.spaced" loadcheck.bind="data.loadcheck"></z-utility-button-text>
+      <z-image if.bind="elementName === 'z-image'" imagesize.bind="data.size || 'small'" marginless.bind="data.marginless || false">
+        <z-icon size.bind="data.size || 'large'" icon.bind="data.icon || 'flag'" color.bind="data.color || 'white'"></z-icon>
+      </z-image>
       <z-icon if.bind="elementName === 'z-icon'" size.bind="data.size || 'small'" icon.bind="data.icon || 'info'" color.bind="data.color || 'white'"></z-icon>
+      <z-single-text-line if.bind="elementName === 'z-single-text-line'" color.bind="data.color || 'red'" position.bind="data.position || 'left'" capitals.bind="data.capitals || false" size.bind="data.size || 'medium'" weight.bind="data.weight || ''" italic.bind="data.italic || false" padding.bind="data.padding || ''" underline.bind="data.underline || ''" link.bind="data.link || ''" ellipsify.bind="data.ellipsify || true" family.bind="data.family || 'Arial'">Button example</z-single-text-line>
     </div>
+    <!-- ATOMS END -->
+
+    <!-- MOLECULES START -->
+    <z-button-group if.bind="elementName === 'z-button-group'">
+      <z-utility-button icon.bind="data.icon || 'flag'" text.bind="data.text" focused.bind="data.focused" spaced.bind="data.spaced" position.bind="data.position || 'left'" processing.bind="data.processing"></z-utility-button>
+      <z-utility-button icon.bind="data.icon || 'info'" text.bind="data.text" focused.bind="data.focused" spaced.bind="data.spaced" position.bind="data.position || 'left'" processing.bind="data.processing"></z-utility-button>
+    </z-button-group>
+    <div style="width: 160px;">
+      <z-text-icon containerless if.bind="elementName === 'z-text-icon'" size.bind="data.size || 'large'" textsize.bind="data.textsize || 'large'" iconsize.bind="data.iconsize || ''" icon.bind="data.icon || 'close'" iconcolor.bind="data.iconcolor || 'blue'" textcolor.bind="data.textcolor || 'red'" spacing.bind="data.spacing || false" hashover.bind="data.hashover || false" capitals.bind="data.capitals || true" reverseorder.bind="data.reverseorder || false" underline.bind="data.underline || false">
+        Text icon example
+      </z-text-icon>
+    </div>
+    <!-- MOLECULES END -->
   </div>
 </template>

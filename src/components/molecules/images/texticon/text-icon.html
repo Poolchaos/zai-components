@@ -1,0 +1,17 @@
+<template>
+
+  <link rel="stylesheet" href="/target/components/molecules/images/texticon/text-icon.css">
+
+  <div class="o-ztext-icon o-ztext-icon--spacing-${spacing} ${hasHover ? 'o-ztext-icon--has-hover' : ''}">
+    <span if.bind="!reverseorder" class="pull-left o-ztext-icon__icon o-ztext-icon__icon--${hasHover ? 'has-hover' : ''} o-ztext-icon__icon--size-${iconSize ? iconSize : size} o-ztext-icon__icon--spacing-${spacing} o-ztext-icon__icon--alignment-${iconAlignment}">
+      <z-icon icon="${icon}" color="${iconColor}"></z-icon>
+    </span>
+    <z-single-text-line class="pull-left o-ztext-icon__text" padding="none" size="${textSize ? textSize : size}" color="${textColor}" capitals="${capitals}" ellipsify="false" link="${link}" underline="${underline}">
+      <slot></slot>
+    </z-single-text-line>
+    <span if.bind="reverseorder" class="pull-left o-ztext-icon__icon o-ztext-icon__icon--${hasHover ? 'has-hover' : ''} o-ztext-icon__icon--size-${iconSize ? iconSize : size} o-ztext-icon__icon--spacing-${spacing} o-ztext-icon__icon--alignment-${iconAlignment}">
+      <z-icon icon="${icon}" color="${iconColor}"></z-icon>
+    </span>
+  </div>
+
+</template>

@@ -1,7 +1,8 @@
-import { LogManager, inject, customElement, bindable } from 'aurelia-framework';
+import { LogManager, inject, customElement, bindable, useShadowDOM } from 'aurelia-framework';
 /**/
 const logger = LogManager.getLogger('ZUtilityButton');
 /**/
+// @useShadowDOM()
 @customElement('z-utility-button')
 @inject(Element)
 export class ZUtilityButton {

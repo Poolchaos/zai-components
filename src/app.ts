@@ -21,6 +21,7 @@ export class App {
   private copied: string = this.copyStates.pending;
   private globalStylesEnabled: boolean = false;
   private components: HtmlBehaviorResource[];
+  private slots: string[] = [];
 
   constructor() {
     this.index = index;
@@ -40,33 +41,45 @@ export class App {
     this.formatStyles();
   }
 
-  private viewComponent(atom: HtmlBehaviorResource): void {
-    this.createComponentHtml(atom);
+  private viewComponent(component: HtmlBehaviorResource): void {
+    this.slots = [];
+    this.createComponentHtml(component);
 
-    this.selectedComponent = atom;
+    this.selectedComponent = component;
     this.attributes = [];
-    for (let key in atom.attributes) {
-      if (atom.attributes.hasOwnProperty(key)) {
+    for (let key in component.attributes) {
+      if (component.attributes.hasOwnProperty(key)) {
         this.attributes.push({
           property: key
         });
       }
     }
+    for (let key in component.viewFactory.instructions) {
+      if (component.viewFactory.instructions.hasOwnProperty(key)) {
+        const slot = component.viewFactory.instructions[key];
+        if (!slot.slotName || !slot.shadowSlot) {
+          continue;
+        }
+
+        const formattedName = slot.slotName.includes('default') ? 'default' : slot.slotName;
+        this.slots.push(formattedName);
+      }
+    }
 
     this.resetPrettyPrint();
 
-    const url = atom.viewFactory.resources.viewUrl;
+    const url = component.viewFactory.resources.viewUrl;
 
     this.getHtmlContent(url);
     this.getJavaScriptContent(url);
   }
 
-  private createComponentHtml(atom: HtmlBehaviorResource): void {
-    let el = document.createElement(atom.elementName);
-    for (let key in atom.attributes) {
-      if (atom.attributes.hasOwnProperty(key)) {
-        const attr = atom.attributes[key].name;
-        el.setAttribute(attr, this.data[attr] || '');
+  private createComponentHtml(component: HtmlBehaviorResource): void {
+    let el = document.createElement(component.elementName);
+    for (let key in component.attributes) {
+      if (component.attributes.hasOwnProperty(key)) {
+        const attr = component.attributes[key].name;
+        el.setAttribute(attr + '.bind', this.data[attr] || '');
       }
     }
     el.setAttribute('click.delegate', 'someFunction()');
@@ -99,7 +112,7 @@ export class App {
     modifiedUrl = modifiedUrl.replace('target', 'src');
 
     this.getFileContent(modifiedUrl).then((content: string) => {
-      document.querySelector('.js-component-javascript').innerHTML = content;
+      document.querySelector('.js-component-javascript').innerHTML = content.replace(/\/\*[\s\S]*?\*\/|([^\\:]|^)\/\/.*$/gm, '');
       this.addAttributeDefinitions(content);
       this.formatStyles();
     });
@@ -146,6 +159,7 @@ export class App {
   private resetView(): void {
     this.selectedComponent = null;
     this.attributes = null;
+    this.slots = [];
     this.resetPrettyPrint();
     document.querySelector('.js-component-render-html').textContent = ' No Preview';
     document.querySelector('.js-component-javascript').innerHTML = ' No Content';

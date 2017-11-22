@@ -1,0 +1,9 @@
+<template>
+
+  <link rel="stylesheet" href="/target/components/atoms/textelements/singletextline/single-text-line.css">
+
+  <div class="o-single-text-line u-text-style__align--${position ? position : 'center'} u-text-style__color--${color} u-text-style__size--${size} u-text-style--${capitals} ${ellipsify === true ? 'u-text-style--ellipses' : ''} o-single-text-line--padding-${padding} ${underline ? 'u-text-style--underline' : ''} ${link ? 'u-text-style--link o-single-text-line--link' : ''} u-text-style__weight--${weight} ${italic ? 'u-text-style--italic' : ''} u-text-style__family--${family}">
+    <slot></slot>
+  </div>
+
+</template>

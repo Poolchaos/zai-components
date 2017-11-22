@@ -6,7 +6,9 @@ const configure = aurelia => {
     .globalResources('components/atoms/buttons/navbutton/nav-button')
     .globalResources('components/atoms/buttons/utilitybutton/utility-button')
     .globalResources('components/atoms/buttons/utilitybuttontext/utility-button-text')
-    .globalResources('components/atoms/images/icon/icon');
+    .globalResources('components/atoms/images/image/image')
+    .globalResources('components/atoms/images/icon/icon')
+    .globalResources('components/atoms/textelements/singletextline/single-text-line');
 };
 
 export { configure };

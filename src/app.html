@@ -4,7 +4,7 @@
 
   <div style="position:absolute;right: 10px;top: 10px; display:block;">
     <label style="font-family:Arial;">Toggle global styles</label>
-    <input type="checkbox" value.bind="globalStylesEnabled" checked.bind="globalStylesEnabled" />
+    <input type="checkbox" value.bind="globalStylesEnabled" checked.bind="globalStylesEnabled" style="width:20px;height:20px;" />
   </div>
 
   <h3>Components</h3>
@@ -20,7 +20,7 @@
   </h4>
 
   <div repeat.for="atom of components">
-    <button class="o-button__glass-rectangle o-button__glass-rectangle--secondary-color o-text__button pull-left" click.delegate="viewComponent(atom)" style="color:black;">
+    <button class="pull-left" click.delegate="viewComponent(atom)" style="color:black;">
       ${atom.elementName}</button>
   </div>
 
@@ -43,7 +43,17 @@
         * ${property.description}
       </div>
     </div>
-    <button class="o-button__glass-rectangle o-button__glass-rectangle--secondary-color o-text__button pull-left" click.delegate="viewComponent(selectedComponent)" style="color:#000;">Generate Code </button>
+    <div repeat.for="slot of slots">
+      <div class="col-5 col-md-5 pull-left">
+        * slot ${$index + 1}
+      </div>
+
+      <div class="col-5 col-md-5 pull-left"></div>
+      <div class="col-7 col-md-7" style="color: #89bdff;font-size: 12px;padding:2px 0px 2px 20px;">
+        name: ${slot}
+      </div>
+    </div>
+    <button class="pull-left" click.delegate="viewComponent(selectedComponent)" style="color:#000;">Generate Code </button>
   </div>
   <div class="col-8 col-md-8 pull-right" style="min-height: 400px;">
     <component-viewer if.bind="selectedComponent" element-name.bind="selectedComponent.elementName" data.bind="data"></component-viewer>

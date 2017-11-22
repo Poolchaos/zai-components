@@ -1,7 +1,8 @@
-import { LogManager, customElement, bindable } from 'aurelia-framework';
+import { LogManager, customElement, bindable, useShadowDOM } from 'aurelia-framework';
 /**/
 const logger = LogManager.getLogger('ZIconButton');
 /**/
+// @useShadowDOM()
 @customElement('z-icon-button')
 export class ZIconButton {
   /*size - the sizeof the button. size-end*/

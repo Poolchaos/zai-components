@@ -1,0 +1,28 @@
+@import '../../../../../node_modules/sass-bem-constructor/dist/_bem-constructor.scss';
+
+@include object('button-group') {
+  display: flex;
+  align-items: center;
+  & > * {
+    margin-left: 6px;
+    margin-right: 6px;
+    &:first-child {
+      margin-left: 0;
+    }
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+  @include modifier('spacing-small') {
+    & > * {
+      margin-left: 3px;
+      margin-right: 3px;
+      &:first-child {
+        margin-left: 0;
+      }
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+  }
+}

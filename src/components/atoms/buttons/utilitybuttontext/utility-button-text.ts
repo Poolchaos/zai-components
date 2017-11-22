@@ -1,7 +1,8 @@
-import { LogManager, customElement, bindable } from 'aurelia-framework';
+import { LogManager, customElement, bindable, useShadowDOM } from 'aurelia-framework';
 /**/
 const logger = LogManager.getLogger('ZUtilityButtonText');
 /**/
+@useShadowDOM()
 @customElement('z-utility-button-text')
 export class ZUtilityButtonText {
   /*label - label for the button. label-end*/

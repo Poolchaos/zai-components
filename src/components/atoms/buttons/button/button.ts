@@ -2,7 +2,7 @@ import { LogManager, customElement, bindable, useShadowDOM } from 'aurelia-frame
 /**/
 const logger = LogManager.getLogger('ZButton');
 /**/
-@useShadowDOM()
+// @useShadowDOM()
 @customElement('z-button')
 export class ZButton {
   /**

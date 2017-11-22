@@ -1,0 +1,32 @@
+@import '../../../../../node_modules/sass-bem-constructor/dist/_bem-constructor.scss';
+
+@import '../../../../_assets/css/_mixins.scss'; //Imports the common styles for mixins
+
+@include object('single-text-line') {
+  padding: 2px 6px;
+  @include modifier('padding-none') {
+    padding: 0;
+  }
+  @include modifier('padding-small') {
+    padding: 0px 5px;
+  }
+  @include modifier('padding-medium') {
+    padding: 10px;
+  }
+  @include modifier('padding-large') {
+    padding: 15px 10px;
+
+    @include breakpoint(medium) {
+      padding: 10px;
+    }
+
+    @include breakpoint(xsmall) {
+      padding: 7px 10px;
+    }
+  }
+  @include modifier('link') {
+    &:hover {
+      color: white;
+    }
+  }
+}

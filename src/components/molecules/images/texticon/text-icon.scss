@@ -1,0 +1,73 @@
+@import '../../../../../node_modules/sass-bem-constructor/dist/_bem-constructor.scss';
+
+@include object('ztext-icon') {
+  & > * {
+    margin-left: 10px;
+    margin-right: 10px;
+    &:first-child {
+      margin-left: 0;
+    }
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+  @include modifier('spacing-small') {
+    & > * {
+      margin-left: 5px;
+      margin-right: 5px;
+      &:first-child {
+        margin-left: 0;
+      }
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+  }
+  @include modifier('has-hover') {
+    cursor: pointer;
+    & .o-ztext-icon__icon--has-hover {
+      opacity: 0.6;
+    }
+    &:hover {
+      & .o-ztext-icon__icon--has-hover {
+        opacity: 1;
+      }
+    }
+  }
+  @include element('icon') {
+    @include modifier('size-tiny') {
+      width: 9px;
+      height: 9px;
+    }
+    @include modifier('size-small') {
+      width: 13px;
+      height: 13px;
+    }
+    @include modifier('size-medium') {
+      transform: translateY(-1px);
+      width: 15px;
+      height: 15px;
+    }
+    @include modifier('size-large') {
+      transform: translateY(-1px);
+      width: 18px;
+      height: 18px;
+    }
+    @include modifier('size-xlarge') {
+      width: 24px;
+      height: 24px;
+    }
+    @include modifier('alignment-medium-icon-small-text') {
+      // yes this is getting ridiculous but it's the only way it can be done until a better font is chosen
+      transform: translateY(0);
+    }
+    @include modifier('alignment-tiny-icon-small-text') {
+      // yes this is getting ridiculous but it's the only way it can be done until a better font is chosen
+      transform: translateY(2px);
+    }
+    @include modifier('alignment-large-icon-medium-text') {
+      // yes this is getting ridiculous but it's the only way it can be done until a better font is chosen
+      transform: translateY(-2px);
+    }
+  }
+}

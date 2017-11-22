@@ -1,7 +1,8 @@
-import { LogManager, customElement, bindable } from 'aurelia-framework';
+import { LogManager, customElement, bindable, useShadowDOM } from 'aurelia-framework';
 /**/
 const logger = LogManager.getLogger('ZButtonHex');
 /**/
+// @useShadowDOM()
 @customElement('z-button-hex')
 export class ZButtonHex {
   /*label - the label for the button. label-end*/
