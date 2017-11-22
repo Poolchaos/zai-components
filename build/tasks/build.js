@@ -111,13 +111,31 @@ gulp.task('build-audio', function() {
     .pipe(gulp.dest(paths.audioOutput));
 });
 
-gulp.task('build-css', function() {
+gulp.task('build-css', ['build-component-css', 'build-global-css'], function() {
   return sass(paths.sass, { sourcemap: true })
     .on('error', sass.logError)
     .pipe(plumber())
     .pipe(minifyCss())
     .pipe(sourcemaps.write())
     .pipe(gulp.dest(paths.styleOutput));
+});
+
+gulp.task('build-component-css', function() {
+  return sass('src/components/**/*.scss', { sourcemap: true })
+    .on('error', sass.logError)
+    .pipe(plumber())
+    .pipe(minifyCss())
+    .pipe(sourcemaps.write())
+    .pipe(gulp.dest('target/components/'));
+});
+
+gulp.task('build-global-css', function() {
+  return sass(paths.globalSass, { sourcemap: true })
+    .on('error', sass.logError)
+    .pipe(plumber())
+    .pipe(minifyCss())
+    .pipe(sourcemaps.write())
+    .pipe(gulp.dest('target/_assets/css/'));
 });
 
 gulp.task('build', function(callback) {

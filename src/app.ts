@@ -10,26 +10,22 @@ export class App {
   private selectedView: string = '';
   private selectedViewModel: string = '';
   private selectedComponent: IComponentIndex;
-  private attributes: any = [];
+  private attributes: any = null;
   private data: any = {};
   private showContent: boolean = false;
-  // private htmlContent: string = '';
-  // private javascriptContent: string = '';
-  // private router: any;
+  private componentHtml: HTMLElement;
+  private copyStates: { pending: string; copied: string } = {
+    copied: 'COPIED',
+    pending: 'PENDING'
+  };
+  private copied: string = this.copyStates.pending;
+  private globalStylesEnabled: boolean = false;
+  private components: HtmlBehaviorResource[];
 
   constructor() {
     this.index = index;
+    this.components = this.index.atoms;
   }
-
-  // private configureRouter(config, router): void {
-  //   let map = [
-  //     { route: ['', 'empty'], name: 'empty', moduleId: 'views/empty/empty', nav: false, title: 'empty', auth: false }, //
-  //     { route: 'component', name: 'component', moduleId: 'views/component/component', nav: false, title: 'Log out', auth: true }
-  //   ];
-
-  //   config.map(map);
-  //   this.router = router;
-  // }
 
   private valueChange(): void {
     this.showContent = false;
@@ -45,24 +41,19 @@ export class App {
   }
 
   private viewComponent(atom: HtmlBehaviorResource): void {
-    // this.router.navigate('empty');
-    // const timer = 200;
-    // setTimeout(() => {
-    //   this.router.navigate('component');
-    // }, timer);
+    this.createComponentHtml(atom);
 
     this.selectedComponent = atom;
     this.attributes = [];
     for (let key in atom.attributes) {
       if (atom.attributes.hasOwnProperty(key)) {
-        this.attributes.push(key);
+        this.attributes.push({
+          property: key
+        });
       }
     }
 
-    let els = document.querySelectorAll('.prettyprinted');
-    els.forEach(element => {
-      element.className = element.className.replace(' prettyprinted', '');
-    });
+    this.resetPrettyPrint();
 
     const url = atom.viewFactory.resources.viewUrl;
 
@@ -70,15 +61,33 @@ export class App {
     this.getJavaScriptContent(url);
   }
 
+  private createComponentHtml(atom: HtmlBehaviorResource): void {
+    let el = document.createElement(atom.elementName);
+    for (let key in atom.attributes) {
+      if (atom.attributes.hasOwnProperty(key)) {
+        const attr = atom.attributes[key].name;
+        el.setAttribute(attr, this.data[attr] || '');
+      }
+    }
+    el.setAttribute('click.delegate', 'someFunction()');
+
+    let tmp = document.createElement('div');
+    tmp.appendChild(el);
+    document.querySelector('.js-component-render-html').textContent = tmp.innerHTML;
+  }
+
+  private resetPrettyPrint(): void {
+    let els = document.querySelectorAll('.prettyprinted');
+    els.forEach((element: HTMLElement) => {
+      element.className = element.className.replace(' prettyprinted', '');
+    });
+  }
+
   private getHtmlContent(url: string): void {
     this.selectedView = 'components/' + url.split('/components/')[1];
 
     this.getFileContent(url).then((content: string) => {
       document.querySelector('.js-component-html').textContent = content;
-
-      // let viewableContent = content.replace('<template>', '');
-      // viewableContent = viewableContent.replace('</template>', '');
-      // this.htmlContent = viewableContent;
       this.formatStyles();
     });
   }
@@ -91,10 +100,7 @@ export class App {
 
     this.getFileContent(modifiedUrl).then((content: string) => {
       document.querySelector('.js-component-javascript').innerHTML = content;
-
-      // let viewableContent = content.replace('<template>', '');
-      // viewableContent = viewableContent.replace('</template>', '');
-      // this.javascriptContent = viewableContent;
+      this.addAttributeDefinitions(content);
       this.formatStyles();
     });
   }
@@ -112,16 +118,46 @@ export class App {
     });
   }
 
+  private addAttributeDefinitions(content: string): void {
+    for (let obj of this.attributes) {
+      const commentStart = content.lastIndexOf(`/*${obj.property} - `);
+      const commentEnd = content.lastIndexOf(` ${obj.property}-end`);
+      obj.description = content.substring(commentStart, commentEnd).replace(`/*${obj.property} - `, '');
+    }
+  }
+
   private formatStyles(): void {
     const timer = 5;
     setTimeout(() => {
       PR.prettyPrint();
-      this.showContent = true;
     }, timer);
+  }
+
+  private viewAtoms(): void {
+    this.components = this.index.atoms;
+    this.resetView();
+  }
+
+  private viewMolecules(): void {
+    this.components = this.index.molecules;
+    this.resetView();
+  }
+
+  private resetView(): void {
+    this.selectedComponent = null;
+    this.attributes = null;
+    this.resetPrettyPrint();
+    document.querySelector('.js-component-render-html').textContent = ' No Preview';
+    document.querySelector('.js-component-javascript').innerHTML = ' No Content';
+    document.querySelector('.js-component-html').textContent = ' //';
+    this.formatStyles();
   }
 }
 
 interface IComponentIndex {
   atoms: HtmlBehaviorResource[];
-  addAtoms(atoms: HtmlBehaviorResource): void;
+  molecules: HtmlBehaviorResource[];
+  addElements(element: [HtmlBehaviorResource]): void;
+  addAtom(element: HtmlBehaviorResource): void;
+  addMolecule(element: HtmlBehaviorResource): void;
 }

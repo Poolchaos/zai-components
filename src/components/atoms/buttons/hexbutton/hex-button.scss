@@ -1,3 +1,14 @@
+@import '../../../../../node_modules/sass-bem-constructor/dist/_bem-constructor.scss';
+
+@import '../../../../_assets/css/_variables'; //Imports the global variables that will be used all over the application
+// @import '../../../../_assets/css/fonts'; //this will import all the font styles
+// @import '../../../../_assets/css/buttons'; //this will import all the button styles
+// @import '../../../../_assets/css/navigation'; //this will import all the navigation styles
+// @import '../../../../_assets/css/bootstrap-xl'; //Imports the custom xl grid that we built
+// @import '../../../../_assets/css/icons'; //Imports the common styles for icons
+// @import '../../../../_assets/css/utilities'; //Imports the common styles for utlities
+@import '../../../../_assets/css/_mixins.scss'; //Imports the common styles for mixins
+
 @include object('button-hex') {
   width: 100%;
   margin: 0 auto;
@@ -46,7 +57,7 @@
     margin: 6px 0 10px;
     display: block;
     text-align: center;
-    @include fontsize('small');
+    // @include fontsize('small');
     color: $color-basic_white;
     text-transform: uppercase;
     font-weight: 500;

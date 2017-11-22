@@ -1,3 +1,8 @@
+@import '../../../../../node_modules/sass-bem-constructor/dist/_bem-constructor.scss';
+
+@import '../../../../_assets/css/_variables'; //Imports the global variables that will be used all over the application
+@import '../../../../_assets/css/_mixins.scss'; //Imports the common styles for mixins
+
 @include object('icon-button') {
   cursor: pointer;
   @include modifier('has-hover') {

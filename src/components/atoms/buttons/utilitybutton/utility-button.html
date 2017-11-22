@@ -1,4 +1,5 @@
 <template>
+  <link rel="stylesheet" href="/target/components/atoms/buttons/utilitybutton/utility-button.css">
 
   <div class="o-utility-button pull-${position} ${spaced ? '' : 'is-not-spaced'} ${text ? 'o-utility-button--text' : ''}" class.bind="focused ? 'is-active' : ''" click.delegate="select()">
     <z-icon icon="${icon}" color="white" if.bind="!text"></z-icon>

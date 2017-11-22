@@ -20,6 +20,7 @@ module.exports = {
   utilsOutput: outputRoot + '_assets/utils/',
   fonts: appRoot + '_assets/fonts/*',
   sass: appRoot + 'index.scss',
+  globalSass: appRoot + 'global.scss',
   output: outputRoot,
   audioOutput: assetsOutputRoot + 'audio/',
   imgOutput: assetsOutputRoot + 'img/',

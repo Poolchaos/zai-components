@@ -1,25 +1,19 @@
-// @import '_assets/css/_colors.css';
-// @import '_assets/css/_functions.css';
-// @import '_assets/css/_mixins.css';
-// @import '_assets/css/_settings.css';
-// @import '_assets/css/_validation.css';
-// @import '_assets/css/_variables.css';
 @import '_assets/css/croppie.css';
 @import '_assets/css/intlTelInput.scss';
 @import '_assets/css/sprite';
 @import '_assets/css/sprite@2x';
 @import '_assets/css/bootstrap.min.css';
 
-@import '../node_modules/sass-bem-constructor/dist/_bem-constructor.scss';
+// @import '../node_modules/sass-bem-constructor/dist/_bem-constructor.scss';
 
-@import '_assets/css/_variables'; //Imports the global variables that will be used all over the application
-@import '_assets/css/fonts'; //this will import all the font styles
-@import '_assets/css/buttons'; //this will import all the button styles
-@import '_assets/css/navigation'; //this will import all the navigation styles
-@import '_assets/css/bootstrap-xl'; //Imports the custom xl grid that we built
-@import '_assets/css/icons'; //Imports the common styles for icons
-@import '_assets/css/utilities'; //Imports the common styles for utlities
-@import '_assets/css/_mixins.scss'; //Imports the common styles for mixins
+// @import '_assets/css/_variables'; //Imports the global variables that will be used all over the application
+// @import '_assets/css/fonts'; //this will import all the font styles
+// @import '_assets/css/buttons'; //this will import all the button styles
+// @import '_assets/css/navigation'; //this will import all the navigation styles
+// @import '_assets/css/bootstrap-xl'; //Imports the custom xl grid that we built
+// @import '_assets/css/icons'; //Imports the common styles for icons
+// @import '_assets/css/utilities'; //Imports the common styles for utlities
+// @import '_assets/css/_mixins.scss'; //Imports the common styles for mixins
 
 @import 'components/index';
 

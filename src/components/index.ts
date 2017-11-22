@@ -10,7 +10,7 @@ const configure = (frameworkConfiguration: FrameworkConfiguration) => {
   const second = 1000;
 
   setTimeout(() => {
-    index.addAtoms(frameworkConfiguration.aurelia.resources.elements);
+    index.addElements(frameworkConfiguration.aurelia.resources.elements);
   }, second);
 };
 

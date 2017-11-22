@@ -1,38 +1,66 @@
 <template>
+
+  <link rel="stylesheet" href="/target/_assets/css/global.css" if.bind="globalStylesEnabled">
+
+  <div style="position:absolute;right: 10px;top: 10px; display:block;">
+    <label style="font-family:Arial;">Toggle global styles</label>
+    <input type="checkbox" value.bind="globalStylesEnabled" checked.bind="globalStylesEnabled" />
+  </div>
+
   <h3>Components</h3>
-  <h4>Atoms</h5>
+  <h4>
+    <ul>
+      <li click.delegate="viewAtoms()">
+        Atoms
+      </li>
+      <li click.delegate="viewMolecules()">
+        Molecules
+      </li>
+    </ul>
+  </h4>
 
-    <div repeat.for="atom of index.atoms">
-      <button class="o-button__glass-rectangle o-button__glass-rectangle--secondary-color o-text__button pull-left" click.delegate="viewComponent(atom)">${atom.elementName}</button>
-    </div>
+  <div repeat.for="atom of components">
+    <button class="o-button__glass-rectangle o-button__glass-rectangle--secondary-color o-text__button pull-left" click.delegate="viewComponent(atom)" style="color:black;">
+      ${atom.elementName}</button>
+  </div>
 
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <!-- <component-viewer element-name.bind="selectedComponent.elementName"></component-viewer> -->
+  <br/>
+  <br/>
+  <br/>
+  <br/>
 
-    <div class="col-4 col-md-4 pull-left" style="min-height: 200px;">
-      <div repeat.for="property of attributes">
-        <div class="col-5 col-md-5 pull-left">
-          ${property}
-        </div>
-        <div class="col-7 col-md-7">
-          <input value.bind="data[property]" keyup.delegate="valueChange()" />
-        </div>
+  <div class="col-4 col-md-4 pull-left" style="min-height: 400px;" if.bind="attributes">
+    <div repeat.for="property of attributes">
+      <div class="col-5 col-md-5 pull-left">
+        ${property.property}
+      </div>
+      <div class="col-7 col-md-7">
+        <input value.bind="data[property.property]" keyup.delegate="valueChange()" style="color:#000;" />
+      </div>
+
+      <div class="col-5 col-md-5 pull-left"></div>
+      <div class="col-7 col-md-7" style="color: #89bdff;font-size: 12px;padding:2px 0px 2px 20px;">
+        * ${property.description}
       </div>
     </div>
-    <div class="col-8 col-md-8 pull-right" style="min-height: 200px;">
-      <component-viewer element-name.bind="selectedComponent.elementName" data.bind="data" if.bind="showContent"></component-viewer>
-    </div>
+    <button class="o-button__glass-rectangle o-button__glass-rectangle--secondary-color o-text__button pull-left" click.delegate="viewComponent(selectedComponent)" style="color:#000;">Generate Code </button>
+  </div>
+  <div class="col-8 col-md-8 pull-right" style="min-height: 400px;">
+    <component-viewer if.bind="selectedComponent" element-name.bind="selectedComponent.elementName" data.bind="data"></component-viewer>
+  </div>
 
-    <div class="col-6 col-md-6 pull-left">
-      <h4>Html</h4>
-      <pre class="prettyprint linenums js-component-html"> No Content</pre>
-    </div>
+  <div>
+    <h4>Usability</h4>
+    <pre class="prettyprint linenums js-component-render-html"> No Preview</pre>
+  </div>
 
-    <div class="col-6 col-md-6 pull-right">
-      <h4>JavaScript</h4>
-      <pre class="prettyprint linenums js-component-javascript"> // No Content </pre>
-    </div>
+  <div class="col-6 col-md-6 pull-left">
+    <h4>Html</h4>
+    <pre class="prettyprint linenums js-component-html"> No Content</pre>
+  </div>
+
+  <div class="col-6 col-md-6 pull-right">
+    <h4>JavaScript</h4>
+    <pre class="prettyprint linenums js-component-javascript"> // No Content </pre>
+  </div>
 </template>
