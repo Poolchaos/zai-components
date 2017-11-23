@@ -20,7 +20,7 @@ $png-icon-map: (
   conversation-contact-detail: 'icon_conversation-contact-detail.png',
   conversation-agent: 'icon_conversation-agent.png',
   sound: 'icon_sound.png',
-  flow:'icon_blue_number-flow.png',
+  flow: 'icon_blue_number-flow.png',
   skill-groups: 'icon_blue-group-skills.png',
   call-arrow-white: 'callType_arrow-white.png',
   view: 'icon_view.png',
@@ -211,4 +211,9 @@ $icon-map: map-merge($png-icon-map, $svg-icon-map);
       background-image: url('../img/#{$value}');
     }
   }
+}
+
+.selected {
+  background-color: rgba(0, 153, 255, 0.2);
+  // background-color: rgba(255, 255, 255, 0.2);
 }

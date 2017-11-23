@@ -4,8 +4,8 @@ const logger = LogManager.getLogger('ZImage');
 /**/
 @customElement('z-image')
 export class ZImage {
-  /*imagesize - the size of the image. imagesize-end*/
+  /*imagesize - [string] the size of the image. imagesize-end*/
   @bindable private imagesize: string;
-  /*marginless - show/hide margin. marginless-end*/
+  /*marginless - [boolean] show/hide margin. marginless-end*/
   @bindable private marginless: boolean;
 }

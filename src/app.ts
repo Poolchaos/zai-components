@@ -1,14 +1,21 @@
-import { LogManager } from 'aurelia-framework';
+import { LogManager, autoinject } from 'aurelia-framework';
 import { HtmlBehaviorResource } from 'aurelia-templating';
+import { DialogService } from 'aurelia-dialog';
 /**/
 import { index } from './component-index';
+import { Dialog } from './dialog/dialog';
 /**/
 const logger = LogManager.getLogger('App');
+const types = {
+  ARRAY: 'array',
+  BOOLEAN: 'boolean',
+  NUMBER: 'number',
+  STRING: 'string'
+};
 /**/
+@autoinject()
 export class App {
   private index: IComponentIndex;
-  private selectedView: string = '';
-  private selectedViewModel: string = '';
   private selectedComponent: IComponentIndex;
   private attributes: any = null;
   private data: any = {};
@@ -19,18 +26,22 @@ export class App {
     pending: 'PENDING'
   };
   private copied: string = this.copyStates.pending;
-  private globalStylesEnabled: boolean = false;
+  private globalStylesEnabled: boolean = true;
   private components: HtmlBehaviorResource[];
   private slots: string[] = [];
+  private types: { ARRAY: string; BOOLEAN: string; NUMBER: string; STRING: string } = types;
+  private images: { png: IImageEntity[]; svg: IImageEntity[] } = {
+    png: [],
+    svg: []
+  };
 
-  constructor() {
+  constructor(private dialogService: DialogService) {
     this.index = index;
     this.components = this.index.atoms;
   }
 
   private valueChange(): void {
     this.showContent = false;
-    logger.debug(' ::>> data change detected ?????????????? ', this.data);
     const timer = 10;
     setTimeout(() => {
       this.showContent = true;
@@ -43,17 +54,35 @@ export class App {
 
   private viewComponent(component: HtmlBehaviorResource): void {
     this.slots = [];
-    this.createComponentHtml(component);
 
     this.selectedComponent = component;
+    this.getComponentAttributes(component);
+    this.getComponentSlots(component);
+    this.createComponentHtml(component);
+    this.resetPrettyPrintAll();
+
+    const url = component.viewFactory.resources.viewUrl;
+    this.getHtmlContent(url);
+    this.getJavaScriptContent(url);
+    this.getStyleContent(url);
+  }
+
+  private getComponentAttributes(component: HtmlBehaviorResource): void {
     this.attributes = [];
     for (let key in component.attributes) {
       if (component.attributes.hasOwnProperty(key)) {
+        if (key === 'icon') {
+          const url = component.viewFactory.resources.viewUrl;
+          this.getIcons(url);
+        }
         this.attributes.push({
           property: key
         });
       }
     }
+  }
+
+  private getComponentSlots(component: HtmlBehaviorResource): void {
     for (let key in component.viewFactory.instructions) {
       if (component.viewFactory.instructions.hasOwnProperty(key)) {
         const slot = component.viewFactory.instructions[key];
@@ -65,13 +94,6 @@ export class App {
         this.slots.push(formattedName);
       }
     }
-
-    this.resetPrettyPrint();
-
-    const url = component.viewFactory.resources.viewUrl;
-
-    this.getHtmlContent(url);
-    this.getJavaScriptContent(url);
   }
 
   private createComponentHtml(component: HtmlBehaviorResource): void {
@@ -79,26 +101,62 @@ export class App {
     for (let key in component.attributes) {
       if (component.attributes.hasOwnProperty(key)) {
         const attr = component.attributes[key].name;
-        el.setAttribute(attr + '.bind', this.data[attr] || '');
+        let content = this.data[attr];
+        let isBindable = true;
+        let attributeValue = this.data[attr] || '';
+        if (attributeValue) {
+          if (attributeValue === 'true' || attributeValue === 'false') {
+            attributeValue = attributeValue === 'true';
+          } else {
+            isBindable = false;
+          }
+        }
+        el.setAttribute(attr + (isBindable ? '.bind' : ''), attributeValue);
       }
     }
     el.setAttribute('click.delegate', 'someFunction()');
-
-    let tmp = document.createElement('div');
-    tmp.appendChild(el);
-    document.querySelector('.js-component-render-html').textContent = tmp.innerHTML;
+    this.generateMock(el);
   }
 
-  private resetPrettyPrint(): void {
+  private generateMock(el: HTMLElement): void {
+    let tmp = document.createElement('div');
+    tmp.appendChild(el);
+    let htmlText = tmp.innerHTML;
+
+    if (this.slots && this.slots.length) {
+      let slotExample = '';
+      this.slots.forEach((slot: string) => {
+        slotExample += `\n  <!-- slot: '${slot}' -->`;
+        if (slot === 'default') {
+          slotExample += `\n  <!-- Example 1 start -->`;
+          slotExample += `\n  Sed vel turpis. `;
+          slotExample += `\n  <!-- Example 1 end -->`;
+          slotExample += `\n  <!-- Example 2 start -->`;
+          slotExample += `\n  <div slot="default"> Morbi libero nisl. </div>`;
+          slotExample += `\n  <!-- Example 2 end -->`;
+        } else {
+          slotExample += `\n  <!-- Named slot Example start -->`;
+          slotExample += `\n  <div slot="${slot}"> Morbi varius sapien. </div>`;
+          slotExample += `\n  <!-- Named slot Example end -->`;
+        }
+      });
+      htmlText = htmlText.replace('><', `>${slotExample}\n<`);
+    }
+    document.querySelector('.js-component-render-html').textContent = htmlText;
+  }
+
+  private resetPrettyPrintAll(): void {
     let els = document.querySelectorAll('.prettyprinted');
-    els.forEach((element: HTMLElement) => {
-      element.className = element.className.replace(' prettyprinted', '');
+    els.forEach((element: Element) => {
+      this.resetPrettyPrint(element);
     });
   }
 
-  private getHtmlContent(url: string): void {
-    this.selectedView = 'components/' + url.split('/components/')[1];
+  private resetPrettyPrint(element: Element): void {
+    element.className = element.className.replace(' prettyprinted', '');
+  }
 
+  private getHtmlContent(url: string): void {
     this.getFileContent(url).then((content: string) => {
       document.querySelector('.js-component-html').textContent = content;
       this.formatStyles();
@@ -106,14 +164,22 @@ export class App {
   }
 
   private getJavaScriptContent(url: string): void {
-    this.selectedViewModel = 'components/' + url.split('/components/')[1].replace('.html', '');
-
     let modifiedUrl = url.replace('.html', '.ts');
     modifiedUrl = modifiedUrl.replace('target', 'src');
 
     this.getFileContent(modifiedUrl).then((content: string) => {
       document.querySelector('.js-component-javascript').innerHTML = content.replace(/\/\*[\s\S]*?\*\/|([^\\:]|^)\/\/.*$/gm, '');
       this.addAttributeDefinitions(content);
+      this.formatStyles();
+    });
+  }
+
+  private getStyleContent(url: string): void {
+    let modifiedUrl = url.replace('.html', '.scss');
+    modifiedUrl = modifiedUrl.replace('target', 'src');
+
+    this.getFileContent(modifiedUrl).then((content: string) => {
+      document.querySelector('.js-component-styles').textContent = content;
       this.formatStyles();
     });
   }
@@ -135,7 +201,12 @@ export class App {
     for (let obj of this.attributes) {
       const commentStart = content.lastIndexOf(`/*${obj.property} - `);
       const commentEnd = content.lastIndexOf(` ${obj.property}-end`);
-      obj.description = content.substring(commentStart, commentEnd).replace(`/*${obj.property} - `, '');
+      const attributeDescription = content.substring(commentStart, commentEnd).replace(`/*${obj.property} - `, '');
+      obj.description = attributeDescription.split(']')[1];
+
+      const typeStart = attributeDescription.lastIndexOf(`[`);
+      const typeEnd = attributeDescription.lastIndexOf(`]`);
+      obj.type = attributeDescription.substring(typeStart, typeEnd).replace('[', '');
     }
   }
 
@@ -144,6 +215,13 @@ export class App {
     setTimeout(() => {
       PR.prettyPrint();
     }, timer);
+  }
+
+  private renderComponentHtml(): void {
+    let element = document.querySelector('.js-component-render-html');
+    this.resetPrettyPrint(element);
+    this.createComponentHtml(this.selectedComponent);
+    this.formatStyles();
   }
 
   private viewAtoms(): void {
@@ -160,11 +238,63 @@ export class App {
     this.selectedComponent = null;
     this.attributes = null;
     this.slots = [];
-    this.resetPrettyPrint();
+    this.resetPrettyPrintAll();
     document.querySelector('.js-component-render-html').textContent = ' No Preview';
-    document.querySelector('.js-component-javascript').innerHTML = ' No Content';
-    document.querySelector('.js-component-html').textContent = ' //';
+    document.querySelector('.js-component-javascript').innerHTML = ' // No Content';
+    document.querySelector('.js-component-html').textContent = ' No Content';
+    document.querySelector('.js-component-styles').innerHTML = ' /* No Content */';
     this.formatStyles();
+  }
+
+  private getIcons(url: string): void {
+    url = url.split('target')[0];
+    url += 'src/global.scss';
+    this.getFileContent(url).then((content: string) => {
+      this.locateIcons(content);
+    });
+  }
+
+  private locateIcons(content: string): void {
+    this.images.png = this.getImages(content, '$png-icon-map: (');
+    this.images.svg = this.getImages(content, '$svg-icon-map: (');
+  }
+
+  private getImages(content: string, startString: string): IImageEntity[] {
+    let list = [];
+    content = content.replace(/'/g, '');
+    const preString = startString;
+    const searchString = ');';
+    const preIndex = content.indexOf(preString);
+    const searchIndex = preIndex + content.substring(preIndex).indexOf(searchString);
+
+    const pngData = content.substring(preIndex, searchIndex).replace(preString, '');
+    const stringArray = pngData.split(',');
+
+    stringArray.forEach((item: string) => {
+      let keyValue = item.split(': ');
+      let name = keyValue[0].replace(/\n/g, '');
+      name = name.replace(/\r/g, '');
+      name = name.replace(/ /g, '');
+      list.push({
+        image: keyValue[1],
+        name
+      });
+    });
+    return list;
+  }
+
+  private showPossibleOptions(property: any): void {
+    if (property.property !== 'icon') {
+      return;
+    }
+    const list = this.images.png.concat(this.images.svg);
+    this.dialogService.open({ viewModel: Dialog, model: { id: 'name', list, selected: { name: this.data.icon } } }).then(response => {
+      logger.debug(' ::>> dialog closed ');
+      if (!response.wasCancelled) {
+        logger.debug(' ::>> dialog closed - not canceled ', response);
+        this.data.icon = response.output.name;
+      }
+    });
   }
 }
 
@@ -174,4 +304,9 @@ interface IComponentIndex {
   addElements(element: [HtmlBehaviorResource]): void;
   addAtom(element: HtmlBehaviorResource): void;
   addMolecule(element: HtmlBehaviorResource): void;
+}
+
+interface IImageEntity {
+  image: string;
+  name: string;
 }

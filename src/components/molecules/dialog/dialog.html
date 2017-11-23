@@ -1,0 +1,40 @@
+<template>
+
+  <link rel="stylesheet" href="/target/components/molecules/dialog/dialog.css">
+
+  <div class="o-dialog ${size == 'wide' ? 'o-dialog--wide' : ''} o-dialog--w-${width} o-dialog--h-${height} o-view-border__focus-border o-view-border__focus-border--no-hover">
+    <div class="o-focus-border__corners o-focus-border__corners--top"></div>
+    <div class="o-focus-border__corners o-focus-border__corners--bottom"></div>
+    <div class="o-dialog__inner-wrap">
+      <ai-dialog>
+
+        <ai-dialog-header>
+          <div class="o-dialog__header-content">
+            <h1 class="o-dialog__header">${header}</h1>
+            <div class="o-dialog__close-button" click.delegate="cancel()" show.bind="test">
+              <z-image imagesize="full">
+                <z-icon icon="close"></z-icon>
+              </z-image>
+            </div>
+          </div>
+        </ai-dialog-header>
+
+
+        <ai-dialog-body>
+          <div class="o-dialog__body-content clearfix">
+            <slot name="body"></slot>
+          </div>
+        </ai-dialog-body>
+
+        <ai-dialog-footer show.bind="showFooter">
+          <div class="o-dialog__footer-content o-dialog__footer-content--flex-reverse clearfix">
+            <slot name="footer"></slot>
+          </div>
+        </ai-dialog-footer>
+
+
+      </ai-dialog>
+    </div>
+  </div>
+
+</template>

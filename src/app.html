@@ -2,7 +2,7 @@
 
   <link rel="stylesheet" href="/target/_assets/css/global.css" if.bind="globalStylesEnabled">
 
-  <div style="position:absolute;right: 10px;top: 10px; display:block;">
+  <div style="position:fixed;right: 10px;top: 10px;">
     <label style="font-family:Arial;">Toggle global styles</label>
     <input type="checkbox" value.bind="globalStylesEnabled" checked.bind="globalStylesEnabled" style="width:20px;height:20px;" />
   </div>
@@ -29,48 +29,76 @@
   <br/>
   <br/>
 
-  <div class="col-4 col-md-4 pull-left" style="min-height: 400px;" if.bind="attributes">
-    <div repeat.for="property of attributes">
-      <div class="col-5 col-md-5 pull-left">
-        ${property.property}
-      </div>
-      <div class="col-7 col-md-7">
-        <input value.bind="data[property.property]" keyup.delegate="valueChange()" style="color:#000;" />
-      </div>
+  <div class="col-12 col-md-12">
+    <div class="col-4 col-md-4 pull-left" style="min-height: 400px;" if.bind="attributes">
+      <div repeat.for="property of attributes">
+        <div class="col-5 col-md-5 pull-left">
+          ${property.property}
+        </div>
+        <div class="col-7 col-md-7">
+          <input value.bind="data[property.property]" keyup.delegate="valueChange()" style="color:#000;" if.bind="property.type === types.STRING" click.delegate="showPossibleOptions(property)" />
 
-      <div class="col-5 col-md-5 pull-left"></div>
-      <div class="col-7 col-md-7" style="color: #89bdff;font-size: 12px;padding:2px 0px 2px 20px;">
-        * ${property.description}
+          <div class="c-recent-conversations-form u-flex u-align-items-center" if.bind="property.type === types.BOOLEAN">
+            <li class="o-form-radio-list__item o-form-radio-list__item--half pull-left u-margin-right--20">
+              <input id="js-toggle-true-${$index}" type="radio" name="toggle-${property.property}" class="o-hidden__radio" value="true" checked.bind="data[property.property]" />
+              <label class="o-form-radio-list__text pull-left" for="js-toggle-true-${$index}">true</label>
+            </li>
+
+            <li class="o-form-radio-list__item o-form-radio-list__item--half pull-left">
+              <input id="js-toggle-false-${$index}" type="radio" name="toggle-${property.property}" class="o-hidden__radio" value="" checked.bind="data[property.property]" />
+              <label class="o-form-radio-list__text pull-left" for="js-toggle-false-${$index}">false</label>
+            </li>
+          </div>
+
+        </div>
+
+        <div class="col-5 col-md-5 pull-left"></div>
+        <div class="col-7 col-md-7" style="color: #89bdff;font-size: 12px;padding:2px 0px 2px 20px;">
+          * ${property.description}
+        </div>
+      </div>
+      <div repeat.for="slot of slots">
+        <div class="col-5 col-md-5 pull-left">
+          * slot ${$index + 1}
+        </div>
+
+        <div class="col-5 col-md-5 pull-left"></div>
+        <div class="col-7 col-md-7" style="font-size: 12px;padding:2px 0px 2px 20px;">
+          name: ${slot}
+        </div>
+      </div>
+      <button class="pull-left" click.delegate="renderComponentHtml(selectedComponent)" style="color:#000;">Generate Code</button>
+    </div>
+    <div class="col-8 col-md-8 pull-right" style="min-height: 400px;">
+      <component-viewer if.bind="selectedComponent" element-name.bind="selectedComponent.elementName" data.bind="data"></component-viewer>
+    </div>
+  </div>
+
+  <div class="col-12 col-md-12">
+    <div class="col-1 col-md-1"></div>
+    <div class="col-10 col-md-10">
+      <h4>Usability</h4>
+      <pre class="prettyprint linenums js-component-render-html"> No Preview</pre>
+    </div>
+    <div class="col-1 col-md-1"></div>
+  </div>
+
+  <div id="container">
+    <input id="tab-1" type="radio" name="tab-group" checked="checked" />
+    <label for="tab-1">Html</label>
+    <input id="tab-2" type="radio" name="tab-group" />
+    <label for="tab-2">JavaScript</label>
+    <input id="tab-3" type="radio" name="tab-group" />
+    <label for="tab-3">Styles</label>
+    <div id="content">
+      <div id="content-1">
+        <pre id="content-1" class="prettyprint linenums js-component-html"> No Content</pre>
+      </div>
+      <div id="content-2">
+        <pre class="prettyprint linenums js-component-javascript"> // No Content </pre>
+      </div>
+      <div id="content-3">
+        <pre class="prettyprint linenums js-component-styles"> /* No Content */ </pre>
       </div>
     </div>
-    <div repeat.for="slot of slots">
-      <div class="col-5 col-md-5 pull-left">
-        * slot ${$index + 1}
-      </div>
-
-      <div class="col-5 col-md-5 pull-left"></div>
-      <div class="col-7 col-md-7" style="color: #89bdff;font-size: 12px;padding:2px 0px 2px 20px;">
-        name: ${slot}
-      </div>
-    </div>
-    <button class="pull-left" click.delegate="viewComponent(selectedComponent)" style="color:#000;">Generate Code </button>
-  </div>
-  <div class="col-8 col-md-8 pull-right" style="min-height: 400px;">
-    <component-viewer if.bind="selectedComponent" element-name.bind="selectedComponent.elementName" data.bind="data"></component-viewer>
-  </div>
-
-  <div>
-    <h4>Usability</h4>
-    <pre class="prettyprint linenums js-component-render-html"> No Preview</pre>
-  </div>
-
-  <div class="col-6 col-md-6 pull-left">
-    <h4>Html</h4>
-    <pre class="prettyprint linenums js-component-html"> No Content</pre>
-  </div>
-
-  <div class="col-6 col-md-6 pull-right">
-    <h4>JavaScript</h4>
-    <pre class="prettyprint linenums js-component-javascript"> // No Content </pre>
-  </div>
 </template>

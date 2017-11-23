@@ -6,18 +6,18 @@ const logger = LogManager.getLogger('ZUtilityButton');
 @customElement('z-utility-button')
 @inject(Element)
 export class ZUtilityButton {
-  /*icon - the icon to display in the button. icon-end*/
-  @bindable private icon;
-  /*text - the text to display in the button. if you have text, it will replace the icon. text-end*/
-  @bindable private text;
-  /*focused - indicates if the button has focus. focused-end*/
-  @bindable private focused;
-  /*spaced - f**k knows. spaced-end*/
-  @bindable private spaced = true;
-  /*position - the position relative to parent node. position-end*/
-  @bindable private position;
-  /*processing - should the button show a loader. processing-end*/
-  @bindable private processing;
+  /*icon - [string] the icon to display in the button. icon-end*/
+  @bindable private icon: string;
+  /*text - [string] the text to display in the button. if you have text, it will replace the icon. text-end*/
+  @bindable private text: string;
+  /*focused - [boolean] indicates if the button has focus. focused-end*/
+  @bindable private focused: boolean;
+  /*spaced - [boolean] f**k knows. spaced-end*/
+  @bindable private spaced: boolean = true;
+  /*position - [string] the position relative to parent node. position-end*/
+  @bindable private position: string;
+  /*processing - [boolean] should the button show a loader. processing-end*/
+  @bindable private processing: boolean;
   private element: Element;
 
   constructor(element: Element) {

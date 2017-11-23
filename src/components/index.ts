@@ -10,7 +10,7 @@ const configure = (frameworkConfiguration: FrameworkConfiguration) => {
 
   logger.debug(' ::>> frameworkConfiguration = ', frameworkConfiguration, typeof frameworkConfiguration.aurelia.resources.elements);
 
-  const second = 1000;
+  const second = 2000;
 
   setTimeout(() => {
     index.addElements(frameworkConfiguration.aurelia.resources.elements);

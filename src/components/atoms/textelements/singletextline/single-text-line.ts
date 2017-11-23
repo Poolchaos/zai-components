@@ -4,28 +4,28 @@ const logger = LogManager.getLogger('ZSingleTextLine');
 /**/
 @customElement('z-single-text-line')
 export class ZSingleTextLine {
-  /*color - color of the text. color-end*/
-  @bindable private color;
-  /*position - position of the text. position-end*/
-  @bindable private position;
-  /*capitals - capitalise text. capitals-end*/
-  @bindable private capitals = '';
-  /*size - the size of the button. size-end*/
-  @bindable private size = 'medium';
-  /*weight - font weight. weight-end*/
-  @bindable private weight;
-  /*italic - make text italic. italic-end*/
-  @bindable private italic;
-  /*padding - size of padding. padding-end*/
-  @bindable private padding;
-  /*underline - underline the text. underline-end*/
-  @bindable private underline;
-  /*link - add link to external reference. link-end*/
-  @bindable private link;
-  /*ellipsify - ellipsify text. ellipsify-end*/
-  @bindable private ellipsify = true;
-  /*family - font family. family-end*/
-  @bindable private family;
+  /*color - [string] color of the text. color-end*/
+  @bindable private color: string;
+  /*position - [string] position of the text. position-end*/
+  @bindable private position: string;
+  /*capitals - [string] capitalise text. capitals-end*/
+  @bindable private capitals: string = '';
+  /*size - [string] the size of the button. size-end*/
+  @bindable private size: string = 'medium';
+  /*weight - [string] font weight. weight-end*/
+  @bindable private weight: string;
+  /*italic - [boolean] make text italic. italic-end*/
+  @bindable private italic: boolean;
+  /*padding - [string] size of padding. padding-end*/
+  @bindable private padding: string;
+  /*underline - [boolean] underline the text. underline-end*/
+  @bindable private underline: boolean;
+  /*link - [boolean] add link to external reference. link-end*/
+  @bindable private link: boolean;
+  /*ellipsify - [boolean] ellipsify text. ellipsify-end*/
+  @bindable private ellipsify: boolean = true;
+  /*family - [string] font family. family-end*/
+  @bindable private family: string;
 
   private created(): void {
     this.textTransform();

@@ -26,7 +26,7 @@
       <z-utility-button icon.bind="data.icon || 'info'" text.bind="data.text" focused.bind="data.focused" spaced.bind="data.spaced" position.bind="data.position || 'left'" processing.bind="data.processing"></z-utility-button>
     </z-button-group>
     <div style="width: 160px;">
-      <z-text-icon containerless if.bind="elementName === 'z-text-icon'" size.bind="data.size || 'large'" textsize.bind="data.textsize || 'large'" iconsize.bind="data.iconsize || ''" icon.bind="data.icon || 'close'" iconcolor.bind="data.iconcolor || 'blue'" textcolor.bind="data.textcolor || 'red'" spacing.bind="data.spacing || false" hashover.bind="data.hashover || false" capitals.bind="data.capitals || true" reverseorder.bind="data.reverseorder || false" underline.bind="data.underline || false">
+      <z-text-icon containerless if.bind="elementName === 'z-text-icon'" size.bind="data.size || 'large'" text-size.bind="data['text-size'] || 'large'" icon-size.bind="data['icon-size'] || ''" icon.bind="data.icon || 'close'" icon-color.bind="data['icon-color'] || 'blue'" text-color.bind="data['text-color'] || 'red'" spacing.bind="data.spacing || false" has-hover.bind="data['has-hover'] || false" capitals.bind="data.capitals || true" reverse-order.bind="data['reverse-order'] || false" underline.bind="data.underline || false">
         Text icon example
       </z-text-icon>
     </div>

@@ -4,35 +4,35 @@ const logger = LogManager.getLogger('ZTextIcon');
 /**/
 @customElement('z-text-icon')
 export class ZTextIcon {
-  /*size - size of the text icon. size-end*/
+  /*size - [string] size of the text icon. size-end*/
   @bindable private size: string;
-  /*text-size - the size of the text. text-size-end*/
+  /*text-size - [string] the size of the text. text-size-end*/
   @bindable({ attribute: 'text-size' })
-  private textSize;
-  /*icon-size - the size of the icon. icon-size-end*/
+  private textSize: string;
+  /*icon-size - [string] the size of the icon. icon-size-end*/
   @bindable({ attribute: 'icon-size' })
-  private iconSize;
-  /*icon - the icon to display in the button. icon-end*/
+  private iconSize: string;
+  /*icon - [string] the icon to display in the button. icon-end*/
   @bindable private icon: string;
-  /*icon-color - the color of the icon. icon-color-end*/
+  /*icon-color - [string] the color of the icon. icon-color-end*/
   @bindable({ attribute: 'icon-color' })
-  private iconColor;
-  /*text-color - the color of the text. text-color-end*/
+  private iconColor: string;
+  /*text-color - [string] the color of the text. text-color-end*/
   @bindable({ attribute: 'text-color' })
-  private textColor;
-  /*spacing - maybe around text?. spacing-end*/
+  private textColor: string;
+  /*spacing - [string] maybe around text?. spacing-end*/
   @bindable private spacing: string;
-  /*has-hover - does the button have hover. has-hover-end*/
+  /*has-hover - [boolean] does the button have hover. has-hover-end*/
   @bindable({ attribute: 'has-hover' })
-  private hasHover;
-  /*capitals - capalise the text. capitals-end*/
+  private hasHover: boolean;
+  /*capitals - [string] capalise the text. capitals-end*/
   @bindable private capitals: string = '';
-  /*reverse-order - why would you need this?. reverse-order-end*/
+  /*reverse-order - [boolean] why would you need this?. reverse-order-end*/
   @bindable({ attribute: 'reverse-order' })
-  private reverseOrder;
-  /*link - link to external reference. link-end*/
+  private reverseOrder: boolean;
+  /*link - [boolean] link to external reference. link-end*/
   @bindable private link: boolean;
-  /*underline - should we underline the text. underline-end*/
+  /*underline - [boolean] should we underline the text. underline-end*/
   @bindable private underline: boolean;
   private iconAlignment;
 

@@ -1,0 +1,25 @@
+<template>
+  <z-dialog header="Select a predefined value" cancel.delegate="cancel()" hasfooter.bind="true">
+    <div slot="body">
+
+      <div repeat.for="item of itemList" style="width: 100px;height: 120px;display:inline-block;position:relative;cursor: pointer;padding-top: 5px;" click.delegate="select(item)" class.bind="item.selected ? 'selected' : ''">
+
+        <div style="width: 70px;height: 70px;margin: auto;">
+          <z-icon icon.bind="item[displayId]"></z-icon>
+        </div>
+
+        <div style="width: 100%;height: 30px;position: absolute;bottom: 10px;left: 0px; text-align: center; ">
+          ${item[displayId]}
+        </div>
+      </div>
+
+    </div>
+
+    <div slot="footer">
+      <z-button click.delegate="ok()">Done</z-button>
+      <z-button click.delegate="cancel()">Cancel</z-button>
+    </div>
+
+  </z-dialog>
+
+</template>

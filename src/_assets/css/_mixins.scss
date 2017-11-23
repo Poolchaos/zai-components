@@ -8,8 +8,8 @@
 /* --------------------------------------- REM-Calculator Mixin (UNTESTED - No Limits) ------------------- */
 
 @mixin rem($selector, $size) {
-  #{$selector} : ($size) + px; //Fallback in px
-  #{$selector} : remcalc($size);
+  #{$selector}: ($size) + px; //Fallback in px
+  #{$selector}: remcalc($size);
 }
 
 /* -----------------------------------==== [REM-Calculator Mixin End] ====-------------------------------- */
@@ -37,7 +37,6 @@
   filter: hue-rotate(-2deg) brightness(17%) saturate(140%);
 }
 
-
 @mixin icon-blue-lighter() {
   filter: brightness(69%) saturate(140%);
 }
@@ -53,91 +52,90 @@
 /* -----------------------------------==== [Whiten Mixin End] ====---------------------------------------- */
 
 /* --------------------------------------- Screen Breakpoint Mixin Start --------------------------------- */
-                                          /* SCREEN SIZE (RESOLUTIONS) */
+/* SCREEN SIZE (RESOLUTIONS) */
 
 @mixin breakpoint($screen) {
-
   //1921px min
   @if $screen == xlarge {
     @media screen and (min-width: 1921px) {
-      @content ;
+      @content;
     }
   }
 
   // 1600px max
   @else if $screen == large {
     @media screen and (min-width: 1401px) and (max-width: 1600px) {
-      @content ;
+      @content;
     }
   }
 
   // 1400px max
   @else if $screen == x-medium {
     @media screen and (min-width: 1367px) and (max-width: 1400px) {
-      @content ;
+      @content;
     }
   }
 
   // 1366px max
-  @else if $screen == medium { 
+  @else if $screen == medium {
     @media screen and (max-width: 1366px) {
-      @content ;
+      @content;
     }
   }
 
   // 1280px max
-  @else if $screen == small {  
+  @else if $screen == small {
     @media screen and (max-width: 1280px) {
-      @content ;
+      @content;
     }
   }
 
   // 1024px max
   @if $screen == xsmall {
     @media screen and (max-width: 1024px) {
-      @content ;
+      @content;
     }
   }
 
   // cases
   @else if $screen == medium-small-box {
     @media screen and (max-height: 768px) and (max-width: 1366px) {
-      @content ;
+      @content;
     }
   }
 
   // cases
   @else if $screen == case-medium {
     @media screen and (min-width: 1200px) and (max-width: 1365px) {
-      @content ;
+      @content;
     }
   }
 
   // cases
   @else if $screen == case-medium-odd-1281 {
     @media screen and (max-width: 1281px) {
-      @content ;
+      @content;
     }
   }
-  
+
   // cases
   @else if $screen == case-medium-odd-1279 {
     @media screen and (min-width: 1200px) and (max-width: 1279px) {
-      @content ;
+      @content;
     }
   }
 
   // cases
   @else if $screen == case-medium-odd-1200 {
     @media screen and (min-width: 1200px) and (max-width: 1280px) {
-      @content ;
+      @content;
     }
   }
-  
+
   // cases
   @else if $screen == case-medium-odd-1201 {
     @media screen and (min-width: 1201px) and (max-width: 1365px) {
-      @content ;
+      @content;
     }
   }
 }
@@ -149,12 +147,12 @@
 @mixin fontsize($size) {
   @if $size=='xsmall' {
     @include rem-calc(10px);
-    line-height: 0.857rem; 
+    line-height: 0.857rem;
     @include breakpoint(xlarge) {
       @include rem-calc(14px);
       line-height: 1.143rem;
     }
-	@include breakpoint(medium) {
+    @include breakpoint(medium) {
       @include rem-calc(6px);
       line-height: 0.586rem;
     }
@@ -162,33 +160,31 @@
       @include rem-calc(9px);
       line-height: 0.786rem;
     }
-  }
-  @else if $size=='small' {
+  } @else if $size=='small' {
     @include rem-calc(12px);
     line-height: 1rem;
     @include breakpoint(xlarge) {
       @include rem-calc(16px);
       line-height: 1.286rem;
     }
-		// @include breakpoint(medium) {
+    // @include breakpoint(medium) {
     //   @include rem-calc(9px);
-    //   line-height: 0.757rem; 
+    //   line-height: 0.757rem;
     // }
     // @include breakpoint(small) {
     //   @include rem-calc(10px);
-    //   line-height: 0.857rem; 
+    //   line-height: 0.857rem;
     // }
-  }
-  @else if $size=='medium' {
+  } @else if $size=='medium' {
     @include rem-calc(14px);
     line-height: 1.143rem;
     @include breakpoint(xlarge) {
       @include rem-calc(18px);
       line-height: 1.429rem;
     }
-		// @include breakpoint(medium) {
+    // @include breakpoint(medium) {
     //   @include rem-calc(9px);
-    //   line-height: 0.8rem; 
+    //   line-height: 0.8rem;
     // }
     @include breakpoint(small) {
       @include rem-calc(12px);
@@ -198,15 +194,14 @@
     //   @include rem-calc(10px);
     //   line-height: 1rem;
     // }
-  }
-  @else if $size=='large' {
+  } @else if $size=='large' {
     @include rem-calc(16px);
     line-height: 1.286rem;
     @include breakpoint(xlarge) {
       @include rem-calc(20px);
       line-height: 1.571rem;
     }
-		@include breakpoint(medium) {
+    @include breakpoint(medium) {
       @include rem-calc(15px);
       line-height: 1.143rem;
     }
@@ -214,15 +209,14 @@
       @include rem-calc(14px);
       line-height: 1.143rem;
     }
-  }
-  @else if $size=='xlarge' {
+  } @else if $size=='xlarge' {
     @include rem-calc(25px);
     line-height: 1.929rem;
     @include breakpoint(xlarge) {
       @include rem-calc(27px);
       line-height: 2.071rem;
     }
-		@include breakpoint(medium) {
+    @include breakpoint(medium) {
       @include rem-calc(19px);
       line-height: 1.486rem;
     }
@@ -246,7 +240,7 @@
       @include rem-calc(26px);
       line-height: 1.8rem;
     }
-		@include breakpoint(medium) {
+    @include breakpoint(medium) {
       @include rem-calc(21px);
       line-height: 1.629rem;
     }
@@ -300,7 +294,6 @@ $color: $primary-color--light) {
   -o-box-shadow: $mode $x $y $spread $size $color;
   box-shadow: $mode $x $y $spread $size $color;
 }
-
 @mixin text-shadow($x: 0,
 $y: 0,
 $blurr: 2px,
@@ -310,11 +303,8 @@ $color: $primary-color--light) {
   -o-text-shadow: $x $y $blurr $color;
   text-shadow: $x $y $blurr $color;
 }
-
 /* -----------------------------------==== [Shadows Mixin End] ====---------------------------------- */
-
 /* --------------------------------------- Validation Mixin Start ----------------------------------- */
-
 @mixin validation {
   position: absolute;
   display: block;
@@ -357,62 +347,50 @@ $color: $primary-color--light) {
     }
   }
 }
-
 /* -----------------------------------==== [Validation Mixin End] ====------------------------------- */
-
 /* --------------------------------------- Transition Mixin Start ----------------------------------- */
-
 @mixin transition() {
-  -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
-  -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
-  transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+  -webkit-transition: border-color ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;
+  -o-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
 }
-
 /* -----------------------------------==== [Transition Mixin End] ====------------------------------- */
-
 /* --------------------------------------- Clip-Path Mixin Start ----------------------------------- */
-
 @mixin clip-path($clip) {
   -webkit-clip-path: $clip;
   -moz-clip-path: $clip;
   -ms-clip-path: $clip;
   clip-path: $clip;
 }
-
 /* -----------------------------------==== [Clip-Path Mixin End] ====------------------------------- */
-
 /* --------------------------------------- Sizing (height and width) Mixin Start ------------------- */
-
 @mixin size($width, $height: $width) {
   width: $width;
   height: $height;
 }
-
 /* -----------------------------------==== [Sizing (height and width) Mixin End] ====--------------- */
-
-
 /* -----------------------------------==== [Image (image and image-size) Mixin Start] ====--------------- */
-
 @mixin image($img, $img-size: 100%, $img-repeat: no-repeat) {
   background-image: url('../img/icon_#{$img}.png');
   background-size: $img-size;
   background-repeat: $img-repeat;
 }
-
+@mixin header-font() {
+  font-family: 'Arial';
+  letter-spacing: 0.107rem;
+}
 /* -----------------------------------==== [Animation Mixin Start] ====--------------- */
-
 @keyframes fadeAnimation {
   0% {
     opacity: 1;
   }
   50% {
-    opacity: .4;
+    opacity: 0.4;
   }
   100% {
     opacity: 1;
   }
 }
-
 @mixin fadeAnimation($iteration-count) {
   opacity: 1;
   animation-name: fadeAnimation;

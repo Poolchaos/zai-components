@@ -1,0 +1,217 @@
+@import '../../../../node_modules/sass-bem-constructor/dist/_bem-constructor.scss';
+@import '../../../_assets/css/_variables'; //Imports the global variables that will be used all over the application
+@import '../../../_assets/css/fonts'; //this will import all the font styles
+
+@include object('dialog') {
+  position: relative;
+  background: rgba(0, 0, 0, 0.9);
+  box-shadow: inset 0 0 130px 35px rgba($color-blue, 0.25) !important;
+  min-width: 600px;
+  max-height: 80%;
+  @include modifier('wide') {
+    width: 1300px;
+    height: 50vh;
+  }
+  @include modifier('w-small') {
+    width: 40vw;
+  }
+
+  @include modifier('w-small-medium') {
+    width: 50vw;
+
+    @media screen and (max-width: 1440px) {
+      width: 60vw;
+    }
+
+    @include breakpoint(xsmall) {
+      width: 80vw;
+    }
+  }
+
+  @include modifier('w-medium') {
+    width: 70vw;
+    @media screen and (max-width: 1280px) {
+      width: 80vw;
+    }
+    @media screen and (max-width: 1366px) {
+      width: 75vw;
+    }
+    @media screen and (max-width: 1440px) {
+      width: 92vw;
+    }
+  }
+  @include modifier('w-large') {
+    width: 80vw;
+  }
+  @include modifier('h-auto') {
+    height: auto;
+  }
+  @include element('inner-wrap') {
+    pointer-events: all;
+  }
+  @include element('header-content') {
+    background: rgba($color-blue, 0.8);
+    height: 40px;
+    border-bottom: 1px solid rgba(rgba(255, 255, 255, 0.3), 0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  @include element('header') {
+    @include fontsize('large');
+    @include header-font();
+    text-transform: uppercase;
+    margin: 0;
+    text-align: center;
+    line-height: 40px;
+    padding: 0 12px;
+    width: calc(100% - 52px);
+    @media screen and (max-width: 1366px) {
+      line-height: 40px;
+    }
+    @media screen and (max-width: 1280px) {
+      line-height: 40px;
+    }
+  }
+  @include element('close-button') {
+    width: 16px;
+    position: absolute;
+    right: 10px;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+    &:hover {
+      opacity: 1;
+    }
+  }
+  @include element('body-content') {
+    padding: 30px 40px;
+
+    @include breakpoint(large) {
+      zoom: 0.8;
+    }
+
+    @include breakpoint(medium) {
+      padding: 10px 20px;
+      zoom: 0.9;
+    }
+  }
+  @include element('body-list') {
+    margin-top: 15px;
+    max-height: 200px;
+    overflow-y: auto;
+    @include modifier('spaced') {
+      margin-bottom: 10px;
+    }
+  }
+  @include element('text-guide') {
+    @include fontsize('medium');
+    color: rgba(255, 255, 255, 0.3);
+    text-align: center;
+    @include modifier('no-margin') {
+      margin: 0;
+    }
+  }
+  @include element('loader') {
+    height: 100%;
+    margin-top: 22.3px;
+    margin-bottom: 22.3px;
+  }
+  @include element('image-container') {
+    margin: 0 auto;
+    max-width: 64px;
+  }
+  @include element('sub-header') {
+    @include fontsize('large');
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    padding-bottom: 4px;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-bottom: 30px;
+    margin-top: 30px;
+    text-transform: uppercase;
+    @include modifier('medium') {
+      margin-top: 0;
+      margin-bottom: 1.286rem;
+    }
+  }
+  @include element('footer-content') {
+    text-align: center;
+    padding: 0 50px 30px;
+
+    @include breakpoint(medium) {
+      padding: 0;
+    }
+    @include modifier('flex-reverse') {
+      display: flex;
+      justify-content: center;
+      flex-direction: row-reverse;
+    }
+    @include modifier('settings') {
+      padding: 40px 50px 20px;
+    }
+  }
+  @include element('footer-button') {
+    min-width: 150px;
+    margin-left: 6px;
+    margin-right: 6px;
+  }
+  @include element('radio-list') {
+    margin: 10px 0;
+  }
+  @include element('input-section') {
+    margin-top: 30px;
+
+    @include breakpoint(medium) {
+      margin-top: 0;
+    }
+  }
+}
+
+@include component('validation-placeholder') {
+  height: 14px;
+}
+
+ai-dialog {
+  position: initial !important;
+  display: inherit !important;
+  margin: auto !important;
+  width: auto !important;
+  height: auto !important;
+  box-shadow: none !important;
+  border: none !important;
+  border-radius: none !important;
+  padding: 0px !important;
+  background: transparent !important;
+}
+
+ai-dialog > ai-dialog-header {
+  display: block;
+  padding: 0px !important;
+  border-bottom: none !important;
+}
+
+ai-dialog > ai-dialog-footer {
+  display: block;
+  padding: 0px !important;
+  border-top: none !important;
+  text-align: right;
+}
+
+/*------override default aurelia button styles------*/
+
+ai-dialog > ai-dialog-footer button.o-button--in-prompt-footer {
+  background-color: transparent !important;
+  border-color: none !important;
+  outline: none !important;
+  margin: 0 !important;
+}
+
+ai-dialog > ai-dialog-footer button.o-button__glass-rectangle {
+  border-radius: 0 !important;
+}
+
+ai-dialog > ai-dialog-footer button.o-button__glass-rectangle:hover:enabled {
+  background-color: rgba(0, 0, 0, 0.2) !important;
+  border: 1px solid 0, 0, 0 !important;
+  color: $color-basic_white !important;
+}
