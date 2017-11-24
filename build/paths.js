@@ -2,8 +2,8 @@ var path = require('path');
 
 var appRoot = 'src/';
 var outputRoot = 'target/';
-var generatedRoot = 'generated/';
 var assetsOutputRoot = 'target/_assets/';
+var dist = 'dist/';
 var dddRoot = 'ddd/';
 
 module.exports = {
@@ -35,8 +35,10 @@ module.exports = {
   e2eSpecsDist: 'test/e2e/dist/',
   unitSpecs: 'test/unit/**/*.js',
   swigTemplates: 'build/templates/',
-  commonServices: generatedRoot + '_common/services',
-  api: generatedRoot + '_api',
-  generatedRoot: generatedRoot,
-  generated: generatedRoot + '**/*.*'
+  component: {
+    script: appRoot + 'components/**/*.ts',
+    html: appRoot + 'components/**/*.html',
+    style: appRoot + 'components/**/*.scss',
+    dist: dist
+  }
 };

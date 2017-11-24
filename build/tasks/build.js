@@ -111,7 +111,7 @@ gulp.task('build-audio', function() {
     .pipe(gulp.dest(paths.audioOutput));
 });
 
-gulp.task('build-css', ['build-component-css', 'build-global-css'], function() {
+gulp.task('build-css', ['build-components-css', 'build-global-css'], function() {
   return sass(paths.sass, { sourcemap: true })
     .on('error', sass.logError)
     .pipe(plumber())
@@ -120,7 +120,7 @@ gulp.task('build-css', ['build-component-css', 'build-global-css'], function() {
     .pipe(gulp.dest(paths.styleOutput));
 });
 
-gulp.task('build-component-css', function() {
+gulp.task('build-components-css', function() {
   return sass('src/components/**/*.scss', { sourcemap: true })
     .on('error', sass.logError)
     .pipe(plumber())
@@ -140,4 +140,44 @@ gulp.task('build-global-css', function() {
 
 gulp.task('build', function(callback) {
   return runSequence('clean', ['build-typescript', 'build-html', 'build-images', 'build-svg', 'build-audio', 'build-docs', 'build-fonts', 'build-css', 'build-utils'], callback);
+});
+
+gulp.task('build-component-typescript', function() {
+  let tsResult = gulp
+    .src(paths.component.script)
+    .pipe(
+      plumber({
+        errorHandler: notify.onError('Error: <%= error.message %>')
+      })
+    )
+    .pipe(tsLint(tsLintOptions))
+    .pipe(tsLint.report())
+    .pipe(sourcemaps.init())
+    .pipe(tsProject());
+  return tsResult.js
+    .pipe(
+      sourcemaps.write({
+        includeContent: true
+      })
+    )
+    .pipe(gulp.dest(paths.component.dist));
+});
+
+gulp.task('build-component-html', function() {
+  return gulp
+    .src(paths.component.html) //
+    .pipe(gulp.dest(paths.component.dist));
+});
+
+gulp.task('build-component-css', function() {
+  return sass(paths.component.style, { sourcemap: true })
+    .on('error', sass.logError)
+    .pipe(plumber())
+    .pipe(minifyCss())
+    .pipe(sourcemaps.write())
+    .pipe(gulp.dest(paths.component.dist));
+});
+
+gulp.task('package', function(callback) {
+  return runSequence('clean-export', ['build-component-typescript', 'build-component-html', 'build-component-css'], callback);
 });

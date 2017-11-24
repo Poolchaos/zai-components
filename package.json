@@ -1,7 +1,8 @@
 {
-  "name": "conversations",
+  "name": "zai-components",
   "private": true,
-  "version": "2.39.2",
+  "version": "1.0.0",
+  "entry": "dist/index.js",
   "jspm": {
     "registry": "npm",
     "dependencies": {
