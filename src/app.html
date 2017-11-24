@@ -8,19 +8,15 @@
   </div>
 
   <h3>Components</h3>
-  <h4>
-    <ul>
-      <li click.delegate="viewAtoms()">
-        Atoms
-      </li>
-      <li click.delegate="viewMolecules()">
-        Molecules
-      </li>
-    </ul>
-  </h4>
+  <div style="height: 50px;">
+    <button click.delegate="viewAtoms()" class="btn btn-primary pull-left">Atoms</button>
+    <button click.delegate="viewMolecules()" class="btn btn-primary pull-left">Molecules</button>
+    <button click.delegate="viewOrganisms()" class="btn btn-primary pull-left">Organisms</button>
+    <button click.delegate="viewTemplates()" class="btn btn-primary pull-left">Templates</button>
+  </div>
 
-  <div repeat.for="atom of components">
-    <button class="pull-left" click.delegate="viewComponent(atom)" style="color:black;">
+  <div repeat.for="atom of components | orderBy:'elementName'">
+    <button class="btn btn-default pull-left" click.delegate="viewComponent(atom)">
       ${atom.elementName}</button>
   </div>
 

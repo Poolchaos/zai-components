@@ -1,0 +1,28 @@
+@include object('page-body') {
+  position: relative;
+
+  @include breakpoint(large) {
+    height: 100%;
+  }
+
+  @include breakpoint(medium) {
+    height: 100%;
+  }
+
+  @include modifier('header-utility-footer') {
+    height: calc(100% - #{$page_header-height} - #{$page_utility-height} - #{$page_footer-height});
+  }
+  @include modifier('header-attributes-footer') {
+    height: calc(100% - #{$page_header-height} - #{$page_footer-height} - 30px);
+    margin-top: 30px;
+  }
+  @include modifier('header-utility') {
+    height: calc(100% - #{$page_header-height} - #{$page_utility-height});
+  }
+  @include modifier('header-footer') {
+    height: calc(100% - #{$page_header-height} - #{$page_footer-height});
+  }
+  @include modifier('header') {
+    height: calc(100% - #{$page_header-height});
+  }
+}

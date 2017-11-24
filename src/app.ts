@@ -54,6 +54,7 @@ export class App {
 
   private viewComponent(component: HtmlBehaviorResource): void {
     this.slots = [];
+    this.data = {};
 
     this.selectedComponent = component;
     this.getComponentAttributes(component);
@@ -234,6 +235,16 @@ export class App {
     this.resetView();
   }
 
+  private viewOrganisms(): void {
+    this.components = this.index.organisms;
+    this.resetView();
+  }
+
+  private viewTemplates(): void {
+    this.components = this.index.templates;
+    this.resetView();
+  }
+
   private resetView(): void {
     this.selectedComponent = null;
     this.attributes = null;
@@ -288,7 +299,7 @@ export class App {
       return;
     }
     const list = this.images.png.concat(this.images.svg);
-    this.dialogService.open({ viewModel: Dialog, model: { id: 'name', list, selected: { name: this.data.icon } } }).then(response => {
+    this.dialogService.open({ viewModel: Dialog, model: { id: 'name', list } }).then(response => {
       logger.debug(' ::>> dialog closed ');
       if (!response.wasCancelled) {
         logger.debug(' ::>> dialog closed - not canceled ', response);
@@ -301,9 +312,9 @@ export class App {
 interface IComponentIndex {
   atoms: HtmlBehaviorResource[];
   molecules: HtmlBehaviorResource[];
+  organisms: HtmlBehaviorResource[];
+  templates: HtmlBehaviorResource[];
   addElements(element: [HtmlBehaviorResource]): void;
-  addAtom(element: HtmlBehaviorResource): void;
-  addMolecule(element: HtmlBehaviorResource): void;
 }
 
 interface IImageEntity {

@@ -1,0 +1,29 @@
+<template>
+  <z-utility-bar slot="content" marginbottom="15">
+    <!--LEFT CONTENT-->
+    <z-utility-button icon="search" position="left" spaced="true" this.trigger="list.toggleSearch()" focused.bind="list.isSearching" if.bind="list.toggleSearch"></z-utility-button>
+    <z-utility-input autofocus.bind="true" position="left" placeholder="Enter search text here" value.two-way="list.searchTerm" if.bind="list.isSearching"></z-utility-input>
+    <!--RIGHT CONTENT-->
+    <z-utility-count position="right" spaced="false" count.bind="list.items.length"></z-utility-count>
+    <z-utility-button-delete toggle.delegate="list.toggleDelete()" accept.delegate="deleteItems()" isdeleting.bind="list.isDeleting" if.bind="list.toggleDelete"></z-utility-button-delete>
+    <z-utility-button show.bind="!list.isDeleting" icon="add" position="right" this.trigger="addItem()" if.bind="list.addEnabled"></z-utility-button>
+  </z-utility-bar>
+  <z-page-body slot="content" header="true" utility="true" footer="true" loader.bind="!ready">
+    <z-list-container>
+
+      <z-list-card size="short" delete.two-way="item.isDeleting" click.delegate="selectItem(item)" hoverable.bind="(list.isDeleting && !item.isSelected) || (list.select && !list.isDeleting)" selected.bind="item.isSelected" repeat.for="item of list.items | searchFilter:list.searchTerm:startsWithMatch:list.displayId | orderBy:list.displayId | calculatePlaceholders:7:3" placeholder.two-way="item.isPlaceholder" hasloader.bind="item.showLoader">
+
+        <z-card-body hashover.bind="item.hasHover && !isDeleting">
+          <div slot="default">
+            <z-single-text-line capitals="true" color="white" padding="large" title="${item[list.displayId]}">${item[list.displayId]}</z-single-text-line>
+            <z-image imagesize="30">
+              <z-icon icon="${list.icon || item.icon}"></z-icon>
+            </z-image>
+            <z-single-text-line capitals="true" color="grey" padding="large" title="${item.description}" if.bind="item.description">${item.description}</z-single-text-line>
+          </div>
+        </z-card-body>
+
+      </z-list-card>
+    </z-list-container>
+  </z-page-body>
+</template>

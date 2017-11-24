@@ -3,6 +3,8 @@ import { ConsoleAppender } from 'aurelia-logging-console';
 import { Configure } from 'aurelia-configuration';
 import { ViewResources } from 'aurelia-templating';
 
+import { index } from './component-index';
+
 LogManager.addAppender(new ConsoleAppender());
 LogManager.setLevel(LogManager.logLevel.none);
 
@@ -22,7 +24,7 @@ const configure = aurelia => {
     .plugin('aurelia-computed')
     .plugin('aurelia-ui-virtualization')
     // .feature('zailab.common.js')
-    // .feature('attributes')
+    .feature('attributes')
     // .feature('converters')
     .feature('components')
     .globalResources('component-viewer');
@@ -35,7 +37,12 @@ const configure = aurelia => {
 
   aurelia.start().then(a => {
     a.setRoot('app', document.body);
+    getListOfComponents(aurelia);
   });
+};
+
+const getListOfComponents = (aurelia: any): void => {
+  index.addElements(aurelia.resources.elements);
 };
 
 export { configure };

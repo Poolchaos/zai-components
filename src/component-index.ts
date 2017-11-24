@@ -6,6 +6,8 @@ const logger = LogManager.getLogger('ComponentIndex');
 let index = {
   atoms: [],
   molecules: [],
+  organisms: [],
+  templates: [],
 
   addElements: (elements: [HtmlBehaviorResource]): void => {
     logger.debug(' ::>> addAtoms => ', elements);
@@ -18,6 +20,10 @@ let index = {
           index.addAtom(element);
         } else if (elementUrl.includes('molecules')) {
           index.addMolecule(element);
+        } else if (elementUrl.includes('organisms')) {
+          index.addOrganism(element);
+        } else if (elementUrl.includes('templates')) {
+          index.addTemplates(element);
         }
       }
     }
@@ -27,6 +33,12 @@ let index = {
   },
   addMolecule: (element: HtmlBehaviorResource) => {
     index.molecules.push(element);
+  },
+  addOrganism: (element: HtmlBehaviorResource) => {
+    index.organisms.push(element);
+  },
+  addTemplates: (element: HtmlBehaviorResource) => {
+    index.templates.push(element);
   }
 };
 

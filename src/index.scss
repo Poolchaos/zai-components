@@ -15,7 +15,12 @@
 // @import '_assets/css/utilities'; //Imports the common styles for utlities
 // @import '_assets/css/_mixins.scss'; //Imports the common styles for mixins
 
-@import 'components/index';
+// @import 'components/index';
+body {
+  background: #1e1e1e;
+  padding: 10px 20px;
+  color: #fff;
+}
 
 /* Pretty printing styles. Used with prettify.js. */
 /* Vim sunburst theme by David Leibovic */
