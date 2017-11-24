@@ -6,9 +6,7 @@
   "jspm": {
     "registry": "npm",
     "dependencies": {
-      "CreateJS/SoundJS": "github:CreateJS/SoundJS@^0.6.2",
       "Foliotek/Croppie": "github:Foliotek/Croppie@2.4.1",
-      "Stuk/jszip": "github:Stuk/jszip@^3.1.3",
       "ajax-interceptor": "^1.0.1",
       "aurelia-binding": "^1.2.0",
       "aurelia-bootstrapper": "^2.1.1",
@@ -30,11 +28,8 @@
       "bootstrap": "github:twbs/bootstrap@3.3.7",
       "codebox/moment-precise-range": "github:codebox/moment-precise-range@^1.2.4",
       "codemirror": "^5.25.0",
-      "conversations-common": "gitlab:common-frontend/conversations-common@master",
       "credit-card-validator": "^1.0.8",
       "eventemitter3": "^2.0.3",
-      "external-libraries-frontend/conversations-vendor": "gitlab:external-libraries-frontend/conversations-vendor@1.1.1",
-      "external-libraries-frontend/peerjs": "gitlab:external-libraries-frontend/peerjs@master",
       "file-saver": "^1.3.3",
       "google-maps-api": "^2.0.1",
       "jackocnr/intl-tel-input": "github:jackocnr/intl-tel-input@^11.0.15",
